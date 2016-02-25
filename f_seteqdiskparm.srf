@@ -1,0 +1,31 @@
+$PBExportHeader$f_seteqdiskparm.srf
+$PBExportComments$Set TVM/PEM disk usage function
+global type f_seteqdiskparm from function_object
+end type
+
+forward prototypes
+global subroutine f_seteqdiskparm (readonly datawindow adw)
+end prototypes
+
+global subroutine f_seteqdiskparm (readonly datawindow adw);string	ls, ls_parm[]
+
+f_geteqdiskparm(ls_parm)
+if ls_parm[1]<>"90%" or ls_parm[2]<>"95%" then
+	ls=f_replace(adw.Describe("usage.color"),"~"","")
+	ls=f_replace(ls,"95.0",Left(ls_parm[2],Len(ls_parm[2]) - 1))
+	ls=f_replace(ls,"90.0",Left(ls_parm[1],Len(ls_parm[1]) - 1))
+	ls=adw.Modify("usage.color=~""+ls+"~"")
+
+	ls=f_replace(adw.Describe("s_other.expression"),"~"","")
+	ls=f_replace(ls,"95.0",Left(ls_parm[2],Len(ls_parm[2]) - 1))
+	ls=f_replace(ls,"90.0",Left(ls_parm[1],Len(ls_parm[1]) - 1))
+	ls=adw.Modify("s_other.expression=~""+ls+"~"")
+			
+	ls=f_replace(adw.Describe("s_other_t.expression"),"~"","")
+	ls=f_replace(f_replace(ls,"95.0",Left(ls_parm[2],Len(ls_parm[2]) - 1)),"95%",ls_parm[2])
+	ls=f_replace(f_replace(ls,"90.0",Left(ls_parm[1],Len(ls_parm[1]) - 1)),"90%",ls_parm[1])
+	ls=adw.Modify("s_other_t.expression=~""+ls+"~"")
+end if
+
+end subroutine
+

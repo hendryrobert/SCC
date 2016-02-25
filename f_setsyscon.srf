@@ -1,0 +1,98 @@
+$PBExportHeader$f_setsyscon.srf
+$PBExportComments$SYSCON DB configuration function
+global type f_setsyscon from function_object
+end type
+
+forward prototypes
+global function boolean f_setsyscon ()
+end prototypes
+
+global function boolean f_setsyscon ();//////////////////////////////////////////////////////////////
+//
+// Function boolean f_setsyscon()
+//
+// Description: config SYSCON DB for app specific settings and
+//					 preferences
+//
+//					 this function is launched by the security
+//					 object via the application function
+//					 of_setsyscon(); if of_setsyscon() is not
+//					 defined, the security object will not call it.
+//
+// Return: TRUE - successful; FALSE - error
+//
+//////////////////////////////////////////////////////////////
+string	ls_app, ls_item[]={"Open","Configure","Poll","Control","Logview","Query","Show Revenue","CView","Download","CFS"}
+int		li_conn, li
+string	ls_desc[]={"Open SPX Genfare System Control Center","Perform configuration tasks such as setting equipment positions on a transit map",&
+						  "Poll equipments for status and transactions","Control equipments remotely","View Genfare daily log file",&
+						  "Query database using Genfare interactive SQL","Display revenue related data","Open condition viewer",&
+						  "Download files from TVM/PEM","Common Fare Structure Editor"}
+
+li_conn=gnv_syscon.of_reconnect_security()
+if li_conn<0 then RETURN TRUE
+
+ls_app=GetApplication().AppName
+for li=UpperBound(ls_item) to 1 step -1
+	SELECT 0 INTO :gnv_syscon.SQLNRows FROM security_def WHERE application=:ls_app AND item=:ls_item[li] USING gnv_syscon;
+	if gnv_syscon.SQLCode=100 then
+		INSERT INTO security_def VALUES(:ls_app,:ls_item[li],:ls_desc[li]) USING gnv_syscon;
+		INSERT INTO security_setting VALUES(:ls_app,:ls_item[li],'supervisors') USING gnv_syscon;
+	end if
+next
+
+SELECT 0 INTO :gnv_syscon.SQLNRows FROM security_def WHERE application=:ls_app AND item='AUTO' USING gnv_syscon;
+if gnv_syscon.SQLCode=100 then
+	INSERT INTO security_def VALUES(:ls_app,'AUTO','Autoload Editor') USING gnv_syscon;
+//	INSERT INTO security_setting VALUES(:ls_app,'AUTO','supervisors') USING gnv_syscon;
+end if
+
+SELECT 0 INTO :gnv_syscon.SQLNRows FROM security_pref WHERE application=:ls_app AND code='Confirm' USING gnv_syscon;
+if gnv_syscon.SQLCode=100 then
+	INSERT INTO security_pref VALUES(:ls_app,'Confirm','Yes','BY','Yes - confirm change; No - do not confirm change') USING gnv_syscon;
+end if
+
+SELECT 0 INTO :gnv_syscon.SQLNRows FROM security_pref WHERE application=:ls_app AND code='Show Infraction' USING gnv_syscon;
+if gnv_syscon.SQLCode=100 then
+	INSERT INTO security_pref VALUES(:ls_app,'Show Infraction','No','BY','Yes - show infraction related menu items; No - do not show infraction related menu items') USING gnv_syscon;
+end if
+
+SELECT 0 INTO :gnv_syscon.SQLNRows FROM security_pref WHERE application=:ls_app AND code='Last N Alarm' USING gnv_syscon;
+if gnv_syscon.SQLCode=100 then
+	INSERT INTO security_pref VALUES(:ls_app,'Last N Alarm','5','N0-20','Limit of the number of most recent alarms for the current day in TVM/PEM status popup; 0 - show no alarm') USING gnv_syscon;
+end if
+
+SELECT 0 INTO :gnv_syscon.SQLNRows FROM security_pref WHERE application=:ls_app AND code='TVM UID' USING gnv_syscon;
+if gnv_syscon.SQLCode=100 then
+	INSERT INTO security_pref VALUES(:ls_app,'TVM UID','','','TVM OS login ID') USING gnv_syscon;
+end if
+
+SELECT 0 INTO :gnv_syscon.SQLNRows FROM security_pref WHERE application=:ls_app AND code='TVM PWD' USING gnv_syscon;
+if gnv_syscon.SQLCode=100 then
+	INSERT INTO security_pref VALUES(:ls_app,'TVM PWD','','','TVM OS login password') USING gnv_syscon;
+end if
+
+SELECT 0 INTO :gnv_syscon.SQLNRows FROM security_pref WHERE application=:ls_app AND code='PEM UID' USING gnv_syscon;
+if gnv_syscon.SQLCode=100 then
+	INSERT INTO security_pref VALUES(:ls_app,'PEM UID','','','PEM OS login ID') USING gnv_syscon;
+end if
+
+SELECT 0 INTO :gnv_syscon.SQLNRows FROM security_pref WHERE application=:ls_app AND code='PEM PWD' USING gnv_syscon;
+if gnv_syscon.SQLCode=100 then
+	INSERT INTO security_pref VALUES(:ls_app,'PEM PWD','','','PEM OS login password') USING gnv_syscon;
+end if
+
+SELECT 0 INTO :gnv_syscon.SQLNRows FROM security_pref WHERE application=:ls_app AND code='Status Override' USING gnv_syscon;
+if gnv_syscon.SQLCode=0 then
+	DELETE FROM security_pref WHERE application=:ls_app AND code='Status Override' USING gnv_syscon;
+//	INSERT INTO security_pref VALUES(:ls_app,'Status Override','0','N0-65536','Override/ignore TVM/PEM module status (bit 0-3: TRiM0-3; bit 4-5: hopper1-2; bit 6-14: BTP/Stacker/CTP/Cashbox/Printer/Pinpad/Card reader/UPS/Smart card reader)') USING gnv_syscon;
+end if
+
+COMMIT USING gnv_syscon;
+
+if li_conn>0 then gnv_syscon.of_disconnect("DBA")
+
+RETURN TRUE
+
+end function
+

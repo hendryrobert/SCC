@@ -1,0 +1,55 @@
+$PBExportHeader$f_findlogo.srf
+$PBExportComments$[GFISCC] Find logo file function
+global type f_findlogo from function_object
+end type
+
+forward prototypes
+global function string f_findlogo ()
+end prototypes
+
+global function string f_findlogo ();//////////////////////////////////////////////////////////////
+//
+// Function string f_findlogo()
+//
+// Description: get transit authority logo file name in the following search order:
+//					 1 - registry setting
+//					 2 - GFI base directory (gfiscclogo.*)
+//					 3 - GFI cnf directory (gfiscclogo.*)
+//					 4 - GFI bin directory (gfiscclogo.*)
+//
+//					 supported image file types are: gif, jpg/jpeg, and bmp
+//
+// Return: logo file name or empty if not found
+//
+//////////////////////////////////////////////////////////////
+string	ls_file, ls_dir[], ls_ext[]={"gif","jpg","jpeg","bmp"}
+int		li, li_ext
+long		ll[]
+
+if RegistryGet(gnv_syscon.of_getregkey()+"\Global","Logo",RegString!,ls_file)>0 then
+	ls_file=Trim(ls_file)
+	if ls_file<>"" then
+		if f_getimageinfo(ls_file,ll) then RETURN ls_file
+		RETURN ""
+	end if
+end if
+
+ls_dir[1]=gnv_syscon.of_getgfidir()
+ls_dir[2]=ls_dir[1]+"cnf\"
+ls_dir[3]=ls_dir[1]+"bin\"
+
+for li=1 to UpperBound(ls_dir)
+	for li_ext=1 to UpperBound(ls_ext)
+		ls_file=ls_dir[li]+"gfiscclogo."+ls_ext[li_ext]
+		if FileExists(ls_file) then
+			if f_getimageinfo(ls_file,ll) then RETURN ls_file
+			RETURN ""
+		end if
+	next
+next
+
+Message.StringParm="The transit authority logo file was not found."
+RETURN ""
+
+end function
+

@@ -1,0 +1,23 @@
+$PBExportHeader$d_gfiscc_pem.srd
+$PBExportComments$[GFISCC] PEM list datawindow
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=68 color="536870912" )
+table(column=(type=long updatewhereclause=yes name=loc_n dbname="gfi_eq.loc_n" )
+ column=(type=long updatewhereclause=yes name=eq_n dbname="gfi_eq.eq_n" )
+ column=(type=char(16) updatewhereclause=yes name=eq_label dbname="gfi_eq.eq_label" )
+ column=(type=long updatewhereclause=yes name=status dbname="gfi_eq.status" )
+ column=(type=char(4000) updatewhereclause=yes name=ip dbname="gfi_eq.ip" )
+ retrieve="SELECT loc_n, eq_n, eq_label, status, value ip
+FROM gfi_eq LEFT OUTER JOIN gfi_lst ON gfi_lst.type='PEM PARM' AND class=gfi_eq.eq_n AND name='IP@'
+WHERE loc_n IN (SELECT code FROM gfi_lst WHERE type='EQ LOC' AND class=:ai_aut) AND eq_type=2 AND eq_n>0" arguments=(("ai_aut", number)) )
+compute(band=detail alignment="0" expression="if(upper(eq_label) like '%PEM%','','PEM ')+
+if(trim(eq_label)<>'',trim(eq_label),string(eq_n))"border="0" color="33554432" x="9" y="4" height="60" width="1979" format="[GENERAL]" html.valueishtml="0"  name=label visible="0"  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+ 

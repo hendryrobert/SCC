@@ -1,0 +1,35 @@
+$PBExportHeader$d_gfiscc_sum.srd
+$PBExportComments$[GFISCC] System summary datawindow
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 grid.columnmove=no selected.mouse=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=68 color="536870912"  height.autosize=yes)
+table(column=(type=long updatewhereclause=yes name=grp dbname="grp" validationmsg="'Group based on SUM LABEL.code'" )
+ column=(type=long updatewhereclause=yes name=seq dbname="gfi_lst.seq" )
+ column=(type=char(256) updatewhereclause=yes name=name dbname="gfi_lst.name" validationmsg="'Label code (SUM LABEL)'" )
+ column=(type=char(4000) updatewhereclause=yes name=value dbname="gfi_lst.value" validationmsg="'Value for each item'" )
+ column=(type=char(4000) updatewhereclause=yes name=label dbname="gfi_lst.label" validationmsg="'Header text from SUM LABEL.value'" )
+ column=(type=char(4000) updatewhereclause=yes name=tuday dbname="gfi_lst.tuday" validationmsg="'Today in yyyy-mm-dd format from TVM SUM/PEM SUM.value when code=0'" )
+ retrieve="SELECT (CASE WHEN l2.code<21 THEN 1 WHEN l2.code<41 THEN 2 WHEN l2.code<61 THEN 3 ELSE 4 END) grp, l1.code seq,
+		 l1.name, l1.value, l2.value label, l3.value tuday
+FROM gfi_lst l1, gfi_lst l2, gfi_lst l3
+WHERE l1.type=(CASE WHEN :ai_type=2 THEN 'PEM SUM' ELSE 'TVM SUM' END) AND l1.class=:ai_aut AND l1.code>0
+  AND l2.type='SUM LABEL' AND l2.class=:ai_type AND l1.name=l2.name
+  AND l3.type=(CASE WHEN :ai_type=2 THEN 'PEM SUM' ELSE 'TVM SUM' END) AND l3.class=:ai_aut AND l3.code=0
+/*
+l1 - system summary items
+l2 - item labels
+l3 - today in yyyy-mm-dd format
+*/" arguments=(("ai_aut", number),("ai_type", number))  sort="grp A seq A " )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="8388608~tif(seq>0 and trim(value)<>'' and dec(trim(value))>0,case(upper(name) when 'INSVC' then 21004288 when 'INRVS','INMNT' then 21004543 when 'RVS','MNT','OOS','SEC','DIS' then 16777344 else 8388608),8388608)" x="9" y="4" height="60" width="507" format="[general]" html.valueishtml="0"  name=label pointer="Arrow!~tif(name in ('RVS','INRVS','MNT','INMNT','INSVC','OOS','SEC','DIS'),'HyperLink!','Arrow!')" visible="1~tif(seq=0,0,1)" height.autosize=yes edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="1" expression="if(seq>0 and trim(value)<>'' and trim(value)<>'-1',string(dec(trim(value)),'#,##0'+if(upper(name)='REV','.00',''))+' ','')"border="0" color="8388608~tif(seq>0 and trim(value)<>'' and dec(trim(value))>0,case(upper(name) when 'INSVC' then 21004288 when 'INRVS','INMNT' then 21004543 when 'RVS','MNT','OOS','SEC','DIS' then 16777344 else 8388608),8388608)" x="526" y="4" height="60" width="283" format="[GENERAL]" html.valueishtml="0"  name=total pointer="Arrow!~tif(name in ('RVS','INRVS','MNT','INMNT','INSVC','OOS','SEC','DIS'),'HyperLink!','Arrow!')" visible="1"  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Label~tif(grp=1,'Item','Condition')" border="6" color="8388608" x="9" y="4" height="56" width="507" html.valueishtml="0"  name=label_t visible="1~tif(seq=0,1,0)"  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=detail alignment="1" text="Value~tif(grp=1,'Total ',if(ai_type=2,'PEM','TVM')+' Count ')" border="6" color="8388608" x="526" y="4" height="56" width="283" html.valueishtml="0"  name=value_t visible="1~tif(seq=0,1,0)"  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+bitmap(band=detail filename="gfisecurity16.gif" x="635" y="4" height="56" width="64" border="0"  name=p_protect visible="0" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+ 

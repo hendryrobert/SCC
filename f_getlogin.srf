@@ -1,0 +1,29 @@
+$PBExportHeader$f_getlogin.srf
+$PBExportComments$Get login ID and password command line string function
+global type f_getlogin from function_object
+end type
+
+forward prototypes
+global function string f_getlogin ()
+end prototypes
+
+global function string f_getlogin ();//////////////////////////////////////////////////////////////
+//
+// Function string f_getlogin()
+//
+// Description: construct login command line string
+//
+// Return: login command line string; empty if not applicable
+//
+//////////////////////////////////////////////////////////////
+if gnv_syscon.ib_itglogin then
+elseif f_isfalse(gnv_syscon.of_getappparm("Check Security")) then
+elseif f_isgfiadmin() then
+elseif gnv_syscon.of_getuserid()<>"" then
+	RETURN " -U"+gnv_syscon.of_getuserid()+" -P"+gnv_syscon.of_getpwd()
+end if
+
+RETURN ""
+
+end function
+

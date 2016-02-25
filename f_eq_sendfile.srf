@@ -1,0 +1,99 @@
+$PBExportHeader$f_eq_sendfile.srf
+$PBExportComments$Send file to equipment function
+global type f_eq_sendfile from function_object
+end type
+
+forward prototypes
+global subroutine f_eq_sendfile (string as_type, string as_eq)
+end prototypes
+
+global subroutine f_eq_sendfile (string as_type, string as_eq);//////////////////////////////////////////////////////////////
+//
+// Subroutine f_eq_sendfile(string as_type, string as_eq)
+//
+// Description: send file to the selected TVM/PEMs
+//
+// Arguments: as_type - file type
+//				  as_eq - equipment list, e.g. tvm123_1,tvm23_2,
+//
+//////////////////////////////////////////////////////////////
+string	ls, ls_loc, ls_eq, ls_msg="A request", ls_uid
+int		li, li_type, li2=1
+boolean	lb
+
+ls_uid=Trim(gnv_syscon.of_getuserID())
+if ls_uid<>"" then ls_msg+=" by "+ls_uid
+		
+if Lower(Left(as_eq,3))="pem" then li2=2
+
+as_type=Upper(as_type)
+choose case as_type
+	case "CFG"
+		ls_msg+=" to send configuration file to TVM <#> "
+//	case "FS"
+//		ls_msg+=" to send fare structure file to TVM <#> "
+	case "SND"
+		ls_msg+=" to send sound files to TVM <#> "
+	case "ALL"
+		ls_msg+=" to send configuration files and sound files to TVM <#> "
+	case else
+		RETURN
+end choose
+if li2=2 then ls_msg=f_replace(ls_msg,"TVM","PEM")
+
+if UpperBound(gnv_syscon.ib_parm)>0 then
+	if gnv_syscon.ib_parm[1] then ls_msg=Replace(ls_msg,Pos(ls_msg,"<#>")+3,0," at station <S>")
+end if
+
+choose case as_type
+	case "CFG", "FS"
+		OpenWithParm(w_gfiscc_file,li2)
+		li_type=Message.DoubleParm
+		choose case li_type
+			case 1 to 10
+			case else
+				RETURN
+		end choose
+end choose
+
+if RegistryGet(gnv_syscon.of_getregkey()+"\Global\GFISCC","Multi-FS",RegString!,ls)>0 and f_istrue(ls) then lb=TRUE
+
+do
+	li=Pos(as_eq,",")
+	if li>0 then
+		ls=Left(as_eq,li - 1)
+		as_eq=Mid(as_eq,li+1)
+
+		ls_loc=Mid(ls,Pos(ls,"_")+1)
+		ls_eq=Mid(Left(ls,Pos(ls,"_") - 1),4)
+
+		if lb and as_type="CFG" then
+			if li2=2 then
+				ls="gfirun.exe -tEQSendParm -PEM -EQ"+ls_eq+" -s"+String(li_type)+" -hide"
+			else
+				ls="gfirun.exe -tEQSendParm -EQ"+ls_eq+" -s"+String(li_type)+" -hide"
+			end if
+		else
+			ls="gficmd.exe -tEQFILE,"+as_type+","+ls_loc+","+String(li2)+","+ls_eq+","+gnv_syscon.of_getuserID()+","+String(li_type)
+		end if
+
+		if f_nmexec(ls,TRUE) then
+			if gnv_syscon.ib_log_info then
+				ls=f_replace(f_replace(ls_msg,"<#>",ls_eq),"<S>",ls_loc)+"has been submitted"
+				f_log(ls)
+			end if
+		else
+			ls=f_replace(f_replace(ls_msg,"<#>",ls_eq),"<S>",ls_loc)+"failed"
+			if gnv_syscon.ib_log_err then f_log(ls+"~r~n"+Message.StringParm)
+			MessageBox(gnv_syscon.of_gettitle(),ls+". Please check the log file for more details.",StopSign!)
+			RETURN
+		end if
+	end if
+loop while li>0
+
+ls=f_replace(f_replace(ls_msg,gnv_syscon.of_if(li2=2,"PEM","TVM")+" <#>","selected "+gnv_syscon.of_if(li2=2,"PEM","TVM")+"(s)")," at station <S>","")+"has been submitted"
+ls=f_replace(f_replace(ls_msg,"TVM <#>","selected TVM(s)")," at station <S>","")+"has been submitted"
+MessageBox(gnv_syscon.of_gettitle(),ls+".")
+
+end subroutine
+

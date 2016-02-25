@@ -1,0 +1,56 @@
+$PBExportHeader$f_geteqdiskparm.srf
+$PBExportComments$Get EQ DISK SPACE WARN parameter function
+global type f_geteqdiskparm from function_object
+end type
+
+forward prototypes
+global subroutine f_geteqdiskparm (ref string as_parm[])
+end prototypes
+
+global subroutine f_geteqdiskparm (ref string as_parm[]);string	ls_parm[2]
+dec{2}	ldec[2]={90,95}
+
+SELECT MAX(value) INTO :ls_parm[1] FROM gfi_lst WHERE type='SYS PARM' AND class=0 AND name='EQ DISK SPACE WARN 1';
+SELECT MAX(value) INTO :ls_parm[2] FROM gfi_lst WHERE type='SYS PARM' AND class=0 AND name='EQ DISK SPACE WARN 2';
+
+ls_parm[1]=f_replace(ls_parm[1]," ","")
+ls_parm[2]=f_replace(ls_parm[2]," ","")
+
+if ls_parm[1]<>"" then
+	if Right(ls_parm[1],1)="%" then ls_parm[1]=Left(ls_parm[1],Len(ls_parm[1]) - 1)
+	if IsNumber(ls_parm[1]) then
+		ldec[1]=Dec(ls_parm[1])
+		if ldec[1]<=0 or ldec[1]>100 then
+			if gnv_syscon.ib_log_warn then f_log("Warning: SYS PARM ~"EQ DISK SPACE WARN 1~" is configured incorrectly; the value must be greater than 0 and less than or equal to 100%")
+			ldec[1]=90
+		end if
+	elseif gnv_syscon.ib_log_warn then
+		f_log("Warning: SYS PARM ~"EQ DISK SPACE WARN 1~" is configured incorrectly; the format should be n% such as 90%")
+	end if
+end if
+
+if ls_parm[2]<>"" then
+	if Right(ls_parm[2],1)="%" then ls_parm[2]=Left(ls_parm[2],Len(ls_parm[2]) - 1)
+	if IsNumber(ls_parm[2]) then
+		ldec[2]=Dec(ls_parm[2])
+		if ldec[2]<=0 or ldec[2]>100 then
+			if gnv_syscon.ib_log_warn then f_log("Warning: SYS PARM ~"EQ DISK SPACE WARN 2~" is configured incorrectly; the value must be greater than 0 and less than or equal to 100%")
+			ldec[2]=95
+		end if
+	elseif gnv_syscon.ib_log_warn then
+		f_log("Warning: SYS PARM ~"EQ DISK SPACE WARN 2~" is configured incorrectly; the format should be n% such as 95%")
+	end if
+end if
+
+if ldec[2]<ldec[1] then
+	ldec[2]=Min(Max(ldec[1]+1.0, 95.0), 100.0)
+	if gnv_syscon.ib_log_warn then f_log("Warning: SYS PARM ~"EQ DISK SPACE WARN 2~" is less than ~"EQ DISK SPACE WARN 1~"; "+String(ldec[2])+"% will be used")
+end if
+
+as_parm={f_format_trailing(String(ldec[1]),"0"),f_format_trailing(String(ldec[2]),"0")}
+if Right(as_parm[1],1)="." then as_parm[1]=Left(as_parm[1],Len(as_parm[1]) - 1)
+if Right(as_parm[2],1)="." then as_parm[2]=Left(as_parm[2],Len(as_parm[2]) - 1)
+as_parm={as_parm[1]+"%",as_parm[2]+"%"}
+
+end subroutine
+

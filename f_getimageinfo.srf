@@ -1,0 +1,114 @@
+$PBExportHeader$f_getimageinfo.srf
+$PBExportComments$[GFISCC] Get image file information function
+global type f_getimageinfo from function_object
+end type
+
+forward prototypes
+global function boolean f_getimageinfo (string as_file, ref long al_info[])
+end prototypes
+
+global function boolean f_getimageinfo (string as_file, ref long al_info[]);//////////////////////////////////////////////////////////////
+//
+// Function boolean f_getimageinfo(string as_file, ref long al_info[])
+//
+// Description: extract size information from image file header
+//
+//	Arguments: as_file - image file name
+//				  al_info[] - return file information
+//						1 - width in pixels
+//						2 - height in pixels
+//
+// Return: TRUE - successful; FALSE - error
+//
+//////////////////////////////////////////////////////////////
+int		li_file, li
+blob		lblb, lblb_FF
+string	ls_ext
+uint		lui
+
+as_file=Trim(as_file)
+if as_file<>"" then
+	if Pos(as_file,"~"")>0 then
+		Message.StringParm="The image file name, "+as_file+", contains a double quote that is not supported by the "+gnv_syscon.of_gettitle()+"."
+		RETURN FALSE
+	end if
+
+	ls_ext=Upper(Trim(Mid("."+as_file,LastPos("."+as_file,".")+1)))
+	choose case ls_ext									// check file extension
+		case "BMP", "GIF", "JPG", "JPEG"
+		case else
+			Message.StringParm=as_file+" is not a supported image file (.jpg, .jpeg, .bmp, or .gif)."
+			RETURN FALSE
+	end choose
+
+	if FileExists(as_file) then
+		li_file=FileOpen(as_file,StreamMode!,Read!,Shared!)
+		if li_file<0 then
+			Message.StringParm="The image file "+as_file+" could not be opened. It may be locked by another program."
+			RETURN FALSE
+		end if
+	else
+		Message.StringParm="The image file "+as_file+" was not found."
+		RETURN FALSE
+	end if
+else
+	Message.StringParm="Internal error: the input image file name to function f_getimageinfo() was empty."
+	RETURN FALSE
+end if
+
+li=FileRead(li_file,lblb)
+FileClose(li_file)
+
+if li>0 then
+	al_info={0,0}
+	choose case ls_ext
+		case "BMP"
+			choose case String(BlobMid(lblb,1,2))	// check bitmap file header
+				case "BM", "BA"
+					al_info={Long(BlobMid(lblb,19,4)),Long(BlobMid(lblb,23,4))}
+				case else
+					Message.StringParm=as_file+" is not a valid bitmap file."
+					RETURN FALSE
+			end choose
+
+		case "GIF"
+			if String(BlobMid(lblb,1,3))="GIF" then// check GIF file header
+				lui=Integer(BlobMid(lblb,7,2))
+				al_info[1]=lui
+				lui=Integer(BlobMid(lblb,9,2))
+				al_info[2]=lui
+			else
+				Message.StringParm=as_file+" is not a valid GIF file."
+				RETURN FALSE
+			end if
+
+		case else											// jpg file
+			lui=Integer(BlobMid(lblb,1,2))			// check SOI header
+			if lui<>55551 then							// 0xFFD8 (little endian)
+				Message.StringParm=as_file+" is not a valid JPG file."
+				RETURN FALSE
+			end if
+
+			li_file=Min(li,4096)							// set search limit so that it does not waste too much time on a fake image file
+			lblb_FF=BlobMid(lblb,1,1)					// lblb_FF contains a single byte of 0xFF
+			for li=3 to li_file
+				if BlobMid(lblb,li,1)=lblb_FF then
+					choose case Asc(Char(BlobMid(lblb,li+1,1)))
+						case 192, 194						// 0xFFC0, 0xFFC2 - JPG SOF0/2 header (baseline or progressive)
+							al_info[1]=f_blob2ulong(BlobMid(lblb,li+7,2))
+							al_info[2]=f_blob2ulong(BlobMid(lblb,li+5,2))
+							EXIT
+					end choose
+				end if
+			next
+
+	end choose
+
+	if al_info[1]>0 and al_info[2]>0 then RETURN TRUE
+end if
+
+Message.StringParm="The type of the image file, "+as_file+", could not be determined, or the size information were missing in the file header."
+RETURN FALSE
+
+end function
+

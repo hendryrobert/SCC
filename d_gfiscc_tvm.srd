@@ -1,0 +1,22 @@
+$PBExportHeader$d_gfiscc_tvm.srd
+$PBExportComments$[GFISCC] TVM list datawindow
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 grid.columnmove=no selected.mouse=no )
+header(height=72 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=64 color="536870912" )
+table(column=(type=long updatewhereclause=yes name=loc_n dbname="gfi_eq.loc_n" )
+ column=(type=long updatewhereclause=yes name=eq_n dbname="gfi_eq.eq_n" )
+ column=(type=char(16) updatewhereclause=yes name=eq_label dbname="gfi_eq.eq_label" )
+ retrieve="SELECT loc_n, eq_n, eq_label FROM gfi_eq"  sort="eq_n A " )
+text(band=header alignment="0" text="TVM" border="6" color="33554432" x="9" y="8" height="56" width="466" html.valueishtml="0"  name=eq_t visible="1"  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="0" text="Station" border="6" color="33554432" x="485" y="8" height="56" width="466" html.valueishtml="0"  name=loc_n_t visible="1"  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+compute(band=detail alignment="0" expression="trim(eq_label)+if(pos(eq_label,string(eq_n))>0,'',' ('+eq_n+')')"border="0" color="33554432" x="9" y="4" height="56" width="466" format="[GENERAL]" html.valueishtml="0"  name=eq visible="1"  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="485" y="4" height="56" width="466" format="[general]" html.valueishtml="0"  name=loc_n visible="1" dddw.name=d_gfiscc_loc dddw.displaycolumn=loc dddw.datacolumn=code dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0 dddw.autoretrieve=no  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+ 

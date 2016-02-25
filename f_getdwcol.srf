@@ -1,0 +1,42 @@
+$PBExportHeader$f_getdwcol.srf
+$PBExportComments$[GFISCC] Get dynamic datawindow syntax function - column table
+global type f_getdwcol from function_object
+end type
+
+forward prototypes
+global function string f_getdwcol ()
+end prototypes
+
+global function string f_getdwcol ();//////////////////////////////////////////////////////////////
+//
+// Function string f_getdwcol()
+//
+// Description: get datawindow syntax for the column table
+//
+// Return: datawindow column table or empty if no column can be defined
+//
+//////////////////////////////////////////////////////////////
+string	ls, ls_eq
+long		ll
+
+if GetApplication().DisplayName="GFIPEMON" then
+	for ll=gnv_syscon.ids_parm[1].RowCount() to 1 step -1
+		ls_eq="pem"+String(gnv_syscon.ids_parm[1].GetItemNumber(ll,"eq_n"))+"_"+String(gnv_syscon.ids_parm[1].GetItemNumber(ll,"loc_n"))
+		ls+="column=(type=long updatewhereclause=no name="+ls_eq+" dbname=~""+ls_eq+"~")~r~n"
+	next
+else
+	for ll=gnv_syscon.ids_parm[1].RowCount() to 1 step -1
+		if gnv_syscon.ids_parm[1].GetItemNumber(ll,"map_x")>0 or &
+			gnv_syscon.ids_parm[1].GetItemNumber(ll,"map_y")>0 then
+			ls_eq="tvm"+String(gnv_syscon.ids_parm[1].GetItemNumber(ll,"eq_n"))+"_"+String(gnv_syscon.ids_parm[1].GetItemNumber(ll,"loc_n"))
+			ls+="column=(type=long updatewhereclause=no name="+ls_eq+" dbname=~""+ls_eq+"~")~r~n"
+		end if
+	next
+end if
+
+if ls<>"" then ls="table("+ls+")~r~n"
+
+RETURN ls
+
+end function
+

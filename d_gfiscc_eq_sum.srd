@@ -1,0 +1,35 @@
+$PBExportHeader$d_gfiscc_eq_sum.srd
+$PBExportComments$[GFISCC] Equipment summary datawindow
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 grid.columnmove=no selected.mouse=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=68 color="536870912"  height.autosize=yes)
+table(column=(type=long updatewhereclause=yes name=grp dbname="grp" validationmsg="'Group based on SUM LABEL.code'" )
+ column=(type=long updatewhereclause=yes name=code dbname="gfi_lst.code" )
+ column=(type=char(256) updatewhereclause=yes name=name dbname="gfi_lst.name" validationmsg="'Label code (SUM LABEL)'" )
+ column=(type=char(4000) updatewhereclause=yes name=value dbname="gfi_lst.value" validationmsg="'Header text from SUM LABEL.value'" )
+ column=(type=char(0) updatewhereclause=yes name=val dbname="val" validationmsg="'Value for each item'" )
+ retrieve="SELECT (CASE WHEN code<21 THEN 1 WHEN code<41 THEN 2 WHEN code<61 THEN 3 ELSE 4 END) grp, code, name, value, '' val
+FROM gfi_lst WHERE type='SUM LABEL' AND class=:ai_type AND code>0 AND (code<21 OR code>40)
+" arguments=(("ai_type", number))  sort="if(grp=3,0,grp) A code A " )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="8388608" x="9" y="4" height="60" width="407" format="[general]" html.valueishtml="0"  name=label visible="1~tif(code=0,0,1)" height.autosize=yes edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="1" expression="if(grp in (1, 2) and trim(val)<>'',
+case(name when 'TVM' then val
+                  when 'REV' then string(dec(trim(val)),'#,##0.00')
+                  else string(long(trim(val)),'#,##0'))+' ',val)
+/* the trailing space is not a regular space, it's 0xA0 */"border="0" color="8388608" x="425" y="4" height="60" width="306" format="[GENERAL]" html.valueishtml="0"  name=total visible="1~tif(code>0 and grp<>3,1,0)"  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127"  height.autosize=yes)
+bitmap(band=detail filename="led_g.gif" x="416~tif(grp=3 and code>0 and pos(val,'0')>0,f_getledx(0,pos(val,'0'),len(val)),416)" y="4" height="56" width="64" border="0"  name=p_0  tag="Normal operation" visible="1~tif(grp=3 and code>0 and pos(val,'0')>0,1,0)" )
+bitmap(band=detail filename="led_b.gif" x="480~tif(grp=3 and code>0 and pos(val,'1')>0,f_getledx(1,pos(val,'1'),len(val)),480)" y="4" height="56" width="64" border="0"  name=p_1  tag="In revenue/maintenance service or attention needed for minor issue(s)" visible="1~tif(grp=3 and code>0 and pos(val,'1')>0,1,0)" )
+bitmap(band=detail filename="led_y.gif" x="544~tif(grp=3 and code>0 and pos(val,'2')>0,f_getledx(2,pos(val,'2'),len(val)),544)" y="4" height="56" width="64" border="0"  name=p_2  tag="Out of service, offline, or malfunctioning" visible="1~tif(grp=3 and code>0 and pos(val,'2')>0,1,0)" )
+bitmap(band=detail filename="led_r.gif" x="608~tif(grp=3 and code>0 and pos(val,'3')>0,f_getledx(3,pos(val,'3'),len(val)),608)" y="4" height="56" width="64" border="0"  name=p_3  tag="Security alert (intrusion detected or silent/tilt/vibration alarm set)" visible="1~tif(grp=3 and code>0 and pos(val,'3')>0,1,0)" )
+bitmap(band=detail filename="led_w.gif" x="672~tif(grp=3 and code>0 and pos(val,'4')>0,f_getledx(4,pos(val,'4'),len(val)),672)" y="4" height="56" width="64" border="0"  name=p_4  tag="No communication or disconnected" visible="1~tif(grp=3 and code>0 and pos(val,'4')>0,1,0)" )
+text(band=detail alignment="0" text="Label~tcase(grp when 1 then 'Item' when 2 then 'Condition' when 3 then 'Module' else 'Data collection')" border="6" color="8388608" x="9" y="4" height="56" width="407" html.valueishtml="0"  name=label_t visible="1~tif(code=0,1,0)"  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=detail alignment="1" text="Value~tcase(grp when 1 then 'Total ' when 2 then 'TVM Count ' when 3 then 'Status' else 'Time')" border="6" color="8388608" x="425" y="4" height="56" width="306" html.valueishtml="0"  name=total_t visible="1~tif(code=0,1,0)"  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+bitmap(band=detail filename="gfisecurity16.gif" x="544" y="4" height="56" width="64" border="0"  name=p_protect visible="0" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+ 

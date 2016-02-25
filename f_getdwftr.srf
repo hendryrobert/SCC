@@ -1,0 +1,27 @@
+$PBExportHeader$f_getdwftr.srf
+$PBExportComments$[GFISCC] Get dynamic datawindow syntax function - footer
+global type f_getdwftr from function_object
+end type
+
+forward prototypes
+global function string f_getdwftr ()
+end prototypes
+
+global function string f_getdwftr ();//////////////////////////////////////////////////////////////
+//
+// Function string f_getdwftr()
+//
+// Description: get dynamic datawindow footer syntax
+//
+// Return: dynamic datawindow footer syntax
+//
+//////////////////////////////////////////////////////////////
+RETURN "htmltable(border='1')~r~n&
+htmlgen(clientevents='1' clientvalidation='1' clientcomputedfields='1' clientformatting='0' clientscriptable='0' &
+generatejavascript='1' encodeselflinkargs='1' netscapelayers='0')~r~n&
+export.xml(headgroups='1' includewhitespace='0' metadatatype=0 savemetadata=0)~r~n&
+import.xml()~r~n&
+export.pdf(method=0 distill.custompostscript='0' xslfop.print='0')~r~n"
+
+end function
+

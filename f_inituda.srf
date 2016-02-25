@@ -1,0 +1,75 @@
+$PBExportHeader$f_inituda.srf
+$PBExportComments$[GFIMON] Initialize UDA menu options function
+global type f_inituda from function_object
+end type
+
+forward prototypes
+global subroutine f_inituda ()
+end prototypes
+
+global subroutine f_inituda ();// initialize User Defined Actions section in GFI.INI
+// action string format: label;program;cmdline
+string	ls_file, ls, ls2="!@#$%^&*()|`[]{}\:;'?/.,<>"
+int		li
+
+ls_file=gnv_syscon.of_getgfidir()+"cnf\gfi.ini"
+ls=Trim(ProfileString(ls_file,"User Defined Actions","Format",""))
+if ls<>"" then
+else
+	ls=f_getmsg({"gfimon","136","[Label;Program;Command Line Options]"})+" e.g. 1=PinBall Game;C:\Program Files\Windows NT\Pinball\PINBALL.EXE"
+	SetProfileString(ls_file,"User Defined Actions","Format",ls)
+end if
+
+for li=1 to 4
+	ls=Trim(ProfileString(ls_file,"User Defined Actions",String(li),ls2))
+	if ls=ls2 then SetProfileString(ls_file,"User Defined Actions",String(li),"")
+next
+
+// 5: restart INIT service
+ls=Trim(ProfileString(ls_file,"User Defined Actions","5",ls2))
+if ls=ls2 or ls="" then
+	ls=""
+	if gnv_syscon.inv_shell.of_issvcexist("initservice") then
+		ls="&"+f_getmsg({"gfimon","137","Restart Genfare INIT Service"})+";RINIT"
+	end if
+
+	SetProfileString(ls_file,"User Defined Actions","5",ls)
+end if
+
+// 6: Open %GFI% in Windows Explorer
+ls=Trim(ProfileString(ls_file,"User Defined Actions","6",ls2))
+if ls=ls2 then
+	ls="&"+f_getmsg({"gfimon","135","Open Genfare Base Directory in Windows Explorer"})+";GFIDIR"
+	SetProfileString(ls_file,"User Defined Actions","6",ls)
+end if
+
+// 7: Edit GFI.INI file
+ls=Trim(ProfileString(ls_file,"User Defined Actions","7",ls2))
+if ls=ls2 then
+	ls=f_getmsg({"gfimon","138","Edit %1 File","&GFI.INI"})+";GFIINI"
+	SetProfileString(ls_file,"User Defined Actions","7",ls)
+end if
+
+// 8: Edit INITTAB file
+ls=Trim(ProfileString(ls_file,"User Defined Actions","8",ls2))
+if ls=ls2 then
+	ls=f_getmsg({"gfimon","138","Edit %1 File","&INITTAB"})+";INITTAB"
+	SetProfileString(ls_file,"User Defined Actions","8",ls)
+end if
+
+// 9: ODBC Data Source Administrator
+ls=Trim(ProfileString(ls_file,"User Defined Actions","9",ls2))
+if ls=ls2 then
+	ls=f_getmsg({"gfimon","139","ODBC Data Source &Administrator"})+";odbcad32.exe"
+	SetProfileString(ls_file,"User Defined Actions","9",ls)
+end if
+
+// 10: Command Prompt
+ls=Trim(ProfileString(ls_file,"User Defined Actions","10",ls2))
+if ls=ls2 then
+	ls=f_getmsg({"gfimon","140","&Command Prompt"})+";cmd.exe"
+	SetProfileString(ls_file,"User Defined Actions","10",ls)
+end if
+
+end subroutine
+

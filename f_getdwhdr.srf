@@ -1,0 +1,43 @@
+$PBExportHeader$f_getdwhdr.srf
+$PBExportComments$[GFISCC] Get dynamic datawindow syntax function - header
+global type f_getdwhdr from function_object
+end type
+
+forward prototypes
+global function string f_getdwhdr ()
+end prototypes
+
+global function string f_getdwhdr ();//////////////////////////////////////////////////////////////
+//
+// Function string f_getdwhdr()
+//
+// Description: get dynamic datawindow header syntax
+//					 possible substitute items:
+//						<TITLE> - print job title
+//						gfihand.cur - cursor name
+//					 	<DBH> - detail band height
+//
+// Return: dynamic datawindow header syntax
+//
+//////////////////////////////////////////////////////////////
+string		ls
+environment	lenv
+
+GetEnvironment(lenv)
+
+ls="release "+String(lenv.PBMajorRevision)
+if lenv.PBMinorRevision>0 then ls+="."+String(lenv.PBMinorRevision)
+											// units=1 - measured in pixels
+ls+=";~r~ndatawindow(units=1 timer_interval=0 color=15793151 processing=0 HTMLDW=no print.printername='' &
+print.documentname=~"<TITLE>~" print.orientation=1 print.margin.left=24 print.margin.right=24 print.margin.top=24 &
+print.margin.bottom=24 print.paper.source=0 print.paper.size=0 print.canusedefaultprinter=yes print.prompt=no &
+print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes &
+hidegrayline=no pointer='gfihand.cur')~r~n&
+summary(height=0 color='536870912')~r~n&
+footer(height=0 color='536870912')~r~n&
+detail(height=<DBH> color='536870912')~r~n"
+
+RETURN ls
+
+end function
+

@@ -1,0 +1,68 @@
+$PBExportHeader$f_buildeqlistds.srf
+$PBExportComments$[GFISCC] Build equipment list datastore function
+global type f_buildeqlistds from function_object
+end type
+
+forward prototypes
+global function integer f_buildeqlistds ()
+end prototypes
+
+global function integer f_buildeqlistds ();//////////////////////////////////////////////////////////////
+//
+// Function int f_buildeqlistds()
+//
+// Description: build equipment list datastore
+//
+// Return: 1 - one or more equipments have been mapped; 0 - no equipment has been mapped; -1 - error
+//
+//////////////////////////////////////////////////////////////
+int		li
+string	ls
+
+li=f_getaut()
+gnv_syscon.ids_parm[1]=CREATE datastore
+
+gnv_syscon.ib_parm[1]=FALSE
+
+if GetApplication().DisplayName="GFIPEMON" then
+
+	gnv_syscon.ids_parm[1].DataObject="d_gfiscc_pem"
+	gnv_syscon.ids_parm[1].SetSort("eq_n D")
+
+	gnv_syscon.ids_parm[1].SetTransObject(SQLCA)
+	if gnv_syscon.ids_parm[1].Retrieve(li)>0 then
+	else
+		MessageBox(gnv_syscon.of_gettitle(),"No PEM has been defined.",Exclamation!)
+		RETURN -1
+	end if
+else
+	
+	SELECT DISTINCT 0 INTO :SQLCA.SQLNRows FROM gfi_eq
+	WHERE loc_n IN (SELECT code FROM gfi_lst WHERE type='EQ LOC' AND class=:li)
+	  AND eq_type=1 AND eq_n>0 GROUP BY eq_n HAVING COUNT(*)>1;
+	if SQLCA.SQLCode=0 then				// found same TVM for different location, add location number to label
+		gnv_syscon.ib_parm[1]=TRUE
+	end if
+	
+
+	gnv_syscon.ids_parm[1].DataObject="d_gfiscc_eq"
+	gnv_syscon.ids_parm[1].SetSort("eq_n D, loc_n D")
+
+	gnv_syscon.ids_parm[1].SetTransObject(SQLCA)
+	if gnv_syscon.ids_parm[1].Retrieve(li,gnv_syscon.of_if(gnv_syscon.ib_parm[1],1,0))>0 then
+		if gnv_syscon.ids_parm[1].Find("map_x>0 or map_y>0",1,gnv_syscon.ids_parm[1].RowCount())>0 then
+		else
+			Open(w_gfiscc_set)
+			RETURN 0
+		end if
+	else
+		MessageBox(gnv_syscon.of_gettitle(),"No TVM has been defined and/or enabled.",Exclamation!)
+		RETURN -1
+	end if
+end if
+
+
+RETURN 1
+
+end function
+

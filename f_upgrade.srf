@@ -1,0 +1,116 @@
+$PBExportHeader$f_upgrade.srf
+$PBExportComments$Upgrade function
+global type f_upgrade from function_object
+end type
+
+forward prototypes
+global function boolean f_upgrade ()
+end prototypes
+
+global function boolean f_upgrade ();int		li, li_key
+string	ls, ls_key[], ls_v
+datetime	ldt
+ulong		lul, lul2
+n_crc		lnv_crc
+n_share	lnv_share
+boolean	lb
+blob		lblb
+															// auto update works on workstation only
+if RegistryGet(gnv_syscon.of_getregkey()+"\Global","System Type",Regulong!,lul)>0 and (lul=3 or lul=4) then
+else
+	RETURN TRUE
+end if
+
+SELECT ver, check_ver, start_ts, pkg_crc INTO :ls, :li, :ldt, :lul FROM gfi_upgrade WHERE name='NM';
+if SQLCA.SQLCode=0 then								// check package start time
+	if DateTime(Today(),Now())<ldt then RETURN TRUE
+else														// update package does not exist
+	RETURN TRUE
+end if
+															// get current version
+if RegistryGet(gnv_syscon.of_getregkey()+"\Global\Upgrade","Version",RegString!,ls_v)>0 and Trim(ls_v)<>"" then
+	ls_v=Trim(ls_v)
+elseif RegistryKeys("HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall",ls_key)>0 then
+	for li_key=UpperBound(ls_key) to 1 step -1
+		ls_key[li_key]="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\"+ls_key[li_key]
+		if RegistryGet(ls_key[li_key],"DisplayName",RegString!,ls_v)>0 then
+			if Pos(ls_v,"GFI Data System")>0 or Pos(ls_v,"GFI Network Manager")>0 or Pos(ls_v,"SPX Genfare Data System")>0 or Pos(ls_v,"SPX Genfare Network Manager")>0 then
+				if RegistryGet(ls_key[li_key],"DisplayVersion",RegString!,ls_v)>0 and Trim(ls_v)<>"" then
+					ls_v=Trim(ls_v)
+					EXIT
+				end if
+			end if
+		end if
+	next
+	if li_key=0 then ls_v=gnv_syscon.of_getversion()
+else
+	ls_v=gnv_syscon.of_getversion()
+end if
+
+choose case f_isvernew(ls_v,ls)
+	case is<0											// current version is newer
+		if li>0 then RETURN TRUE					// upgrade only
+	case 0												// same version
+		RETURN TRUE
+end choose
+
+if gnv_syscon.inv_shell.of_isadmin() then
+	if lul>0 then
+		if MessageBox(gnv_syscon.of_gettitle(),"A software update ("+ls+") is available. It must be applied before you can open this application. Do you want to continue downloading the package?",Question!,OKCancel!,1)=2 then RETURN FALSE
+	else
+		MessageBox(gnv_syscon.of_gettitle(),"A software update ("+ls+") is available. It must be applied before you can open this application. Local or domain administrator access is required to install this update. Please contact your IT administrator.~r~n~r~nFor Windows Vista and up, use the run as administrator option.",Exclamation!)
+		RETURN FALSE
+	end if
+else
+	MessageBox(gnv_syscon.of_gettitle(),"A software update ("+ls+") is available. It must be applied before you can open this application. Local or domain administrator access is required to install this update. Please contact your IT administrator.~r~n~r~nFor Windows Vista and up, use the run as administrator option.",Exclamation!)
+	RETURN FALSE
+end if
+
+if SharedObjectRegister("n_share","PROGRESS_UPGRADE")=Success! then
+	if SharedObjectGet("PROGRESS_UPGRADE",lnv_share)=Success! then
+		lb=TRUE
+		lnv_share.of_progresson("     Downloading","Downloading update package "+ls+" ...")
+	else
+		SharedObjectUnregister("PROGRESS_UPGRADE")
+	end if
+end if
+
+SELECTBLOB pkg INTO :lblb FROM gfi_upgrade WHERE name='NM';
+if SQLCA.SQLNRows>0 and Len(lblb)>0 then
+	ls=gnv_syscon.of_gettempdir()+"GFIUpdate"+f_replace(ls,".","")+".exe"
+	f_deletefile(ls)
+	li=FileOpen(ls,StreamMode!,Write!,LockWrite!,Replace!)
+	if li>0 then
+		do
+			FileWrite(li,BlobMid(lblb,1,32765))
+			lblb=BlobMid(lblb,32766)
+		loop while Len(lblb)>0
+		FileClose(li)
+	else
+		MessageBox(gnv_syscon.of_gettitle(),"The update package could not be saved into "+ls+" file. Please contact your IT administrator.",Exclamation!)
+		GOTO DONE
+	end if
+else
+	MessageBox(gnv_syscon.of_gettitle(),"The update package could not be found on the server. Please contact your IT administrator.",Exclamation!)
+	GOTO DONE
+end if
+
+lnv_share.of_progresson("     Calculating","Calculating CRC ...")
+lul2=lnv_crc.of_crc32file(ls)
+if lul2=lul then
+	Run(ls)
+	f_slog("UPGRADE","Upgrade package "+Mid(ls,LastPos(ls,"\")+1)+" has been downloaded and executed")
+else
+	MessageBox(gnv_syscon.of_gettitle(),"The update package has a mismatched CRC value (0x"+f_bin2hex(lul2)+" instead of 0x"+f_bin2hex(lul)+"). Please contact your IT administrator.",Exclamation!)
+end if
+
+DONE:
+if lb then
+	lnv_share.of_progressoff()
+	SharedObjectUnregister("PROGRESS_UPGRADE")
+end if
+
+RETURN FALSE
+
+end function
+

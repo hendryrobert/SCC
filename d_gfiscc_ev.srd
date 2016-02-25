@@ -1,0 +1,93 @@
+$PBExportHeader$d_gfiscc_ev.srd
+$PBExportComments$[GFISCC] Event list datawindow
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 grid.columnmove=no selected.mouse=no )
+header(height=72 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=64 color="536870912~tif(mod(getrow(),2)>0,536870912,16311512)"  height.autosize=yes)
+table(column=(type=long update=yes updatewhereclause=yes key=yes identity=yes name=ev_id dbname="vnd_evd_cash.ev_id" )
+ column=(type=datetime update=yes updatewhereclause=yes name=ts dbname="vnd_evd_cash.ts" )
+ column=(type=long update=yes updatewhereclause=yes name=type dbname="vnd_evd_cash.type" )
+ column=(type=long update=yes updatewhereclause=yes name=n dbname="vnd_evd_cash.n" )
+ column=(type=long update=yes updatewhereclause=yes name=mod_type dbname="vnd_evd_cash.mod_type" )
+ column=(type=long update=yes updatewhereclause=yes name=mod_pos dbname="vnd_evd_cash.mod_pos" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=mod_id dbname="vnd_evd_cash.mod_id" )
+ column=(type=long update=yes updatewhereclause=yes name=userid dbname="vnd_evd_cash.userid" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=amt dbname="vnd_evd_cash.amt" )
+ column=(type=long update=yes updatewhereclause=yes name=c5 dbname="vnd_evd_cash.c5" )
+ column=(type=long update=yes updatewhereclause=yes name=c10 dbname="vnd_evd_cash.c10" )
+ column=(type=long update=yes updatewhereclause=yes name=c25 dbname="vnd_evd_cash.c25" )
+ column=(type=long update=yes updatewhereclause=yes name=c100 dbname="vnd_evd_cash.c100" )
+ column=(type=long update=yes updatewhereclause=yes name=b1 dbname="vnd_evd_cash.b1" )
+ column=(type=long update=yes updatewhereclause=yes name=b2 dbname="vnd_evd_cash.b2" )
+ column=(type=long update=yes updatewhereclause=yes name=b5 dbname="vnd_evd_cash.b5" )
+ column=(type=long update=yes updatewhereclause=yes name=b10 dbname="vnd_evd_cash.b10" )
+ column=(type=long update=yes updatewhereclause=yes name=b20 dbname="vnd_evd_cash.b20" )
+ column=(type=long update=yes updatewhereclause=yes name=b50 dbname="vnd_evd_cash.b50" )
+ column=(type=long update=yes updatewhereclause=yes name=b100 dbname="vnd_evd_cash.b100" )
+ column=(type=long update=yes updatewhereclause=yes name=t1 dbname="t1" )
+ column=(type=long update=yes updatewhereclause=yes name=t2 dbname="t2" )
+ column=(type=char(256) updatewhereclause=yes name=log dbname="vnd_evd_cash.log" )
+ retrieve="SELECT ev.ev_id, ts, type, n, mod_type, mod_pos, mod_id, userid,
+		 amt, c5, c10, c25, c100, b1, b2, b5, b10, b20, b50, b100,
+		(CASE WHEN mod_type>2 THEN t1 ELSE stock_type END) t1, (CASE WHEN mod_type>2 THEN t2 ELSE stock_cnt END) t2, log
+FROM (vnd_ev ev LEFT OUTER JOIN vnd_evd_svc svc ON svc.ev_id=ev.ev_id)
+					 LEFT OUTER JOIN vnd_evd_cash cash ON cash.ev_id=ev.ev_id
+WHERE loc_n=:ai_loc AND eq_type=1 AND eq_n=:ai_eq AND (ts>:adt OR (ts=:adt AND ev.ev_id>:al_id))
+" update="vnd_evd_cash" updatewhere=1 updatekeyinplace=no arguments=(("ai_loc", number),("ai_eq", number),("adt", datetime),("al_id", number),("ai_rev", number))  sort="ts A ev_id A " )
+text(band=header alignment="2" text="Time" border="6" color="33554432" x="9" y="8" height="56" width="539" html.valueishtml="0"  name=ts_t visible="1"  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="0" text="Event" border="6" color="33554432" x="558" y="8" height="56" width="1943" html.valueishtml="0"  name=typ_t visible="1"  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=2 alignment="2" tabsequence=32766 border="0" color="33554432" x="9" y="4" height="56" width="539" format="[general]~tf_gettsformat()" html.valueishtml="0"  name=ts visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="type+' - '+lookupdisplay(type)+
+/* supplement info */
+case(type when 591,602,570,571,572
+                then ' (Temperature: '+f_replace(string(n*9.0/500.0+32.0,'#0.##')+' ','. ',' ')+'°F)'
+                when 952
+                then ' ('+if(n=0,'OK',if(n=1,'90% full',if(n=2,'95% full','Status unknown')))+')'
+                when 598
+                then case(n when 1 then ' (Local)' when 2 then ' (Remote)' when 3 then ' (Power loss)' when 4 then ' (Temperature)' when 5 then ' (Remote reboot)')
+                when 704
+                then ' ('+case(n when 0 then 'Sensor missing' when 1 then 'Closed' when 2 then 'Open' when 3 then 'Partially open' else 'Unknown')+')'
+                when 548, 740
+                then ' ('+case(n when 0 then 'Sensor missing' when 1 then 'Bad sensor' when 2 then 'Closed' when 3 then 'Open' when 4 then 'Misaligned' else 'Unknown')+')'
+                when 406,417,418,419,426,468,701,702, 703, 715, 721, 735
+                then if(n=1,' (Condition cleared)','')
+                when 730
+                then if(n>0,' ('+n+')','')
+                else '')+
+/* user info */
+if(trim(mod_id)<>'' and type in (900,901,902,903,993,994,995,996,997),
+' (User ID: '+mod_id+')',if(userid>0 and type<900,' (User ID: '+
+lookupdisplay(userid)+')',''))+
+/* module ID, e.g. TRiM0: 12345, Hopper2: 54321 */
+if(mod_type>0,' ('+lookupdisplay(mod_type)+
+case(mod_type when 1 then string(mod_pos+1) when 2 then string(mod_pos) else '')+
+if(trim(mod_id)<>'' and trim(mod_id)<>'0',': '+trim(mod_id),'')+')','')+
+/* module stock count */
+if(ai_rev>0,
+if(mod_type in (1, 2) and t1>=0 and t2>=0,'~~r~~n(Stock count: '+string(t2,'#,##0')+
+case(t1 when 1 then ' (5¢)' when 2 then ' (10¢)' when 3 then ' (25¢)' 
+when 4 then ' (100¢)' when 5 then ' (Token 1)' when 6 then ' (Token 2)' 
+when 7 then ' (Spare coin)' else '')+')',
+if(mod_type>2 and t1+t2+amt>0,'~~r~~n(Stock count: '+
+mid(if(c5>0,'; '+string(c5,'#,##0')+' (5¢)','')+
+if(c10>0,'; '+string(c10,'#,##0')+' (10¢)','')+
+if(c25>0,'; '+string(c25,'#,##0')+' (25¢)','')+
+if(c100>0,'; '+string(c100,'#,##0')+' (100¢)','')+
+if(b1>0,'; '+string(b1,'#,##0')+' ($1)','')+
+if(b2>0,'; '+string(b2,'#,##0')+' ($2)','')+
+if(b5>0,'; '+string(b5,'#,##0')+' ($5)','')+
+if(b10>0,'; '+string(b10,'#,##0')+' ($10)','')+
+if(b20>0,'; '+string(b20,'#,##0')+' ($20)','')+
+if(b50>0,'; '+string(b50,'#,##0')+' ($50)','')+
+if(b100>0,'; '+string(b100,'#,##0')+' ($100)','')+
+if(t1>0,'; '+string(t1,'#,##0')+' (Token 1)','')+
+if(t2>0,'; '+string(t2,'#,##0')+' (Token 2)',''),3)+')',''))
+,'')+if(trim(log)<>'',' ('+trim(log)+')','')"border="0" color="33554432" x="558" y="4" height="56" width="1943" format="[GENERAL]" html.valueishtml="0"  name=typ visible="1"  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912"  height.autosize=yes)
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+ 

@@ -1,0 +1,101 @@
+$PBExportHeader$f_init_menu.srf
+$PBExportComments$[GFIMON] Initialize main menu function
+global type f_init_menu from function_object
+end type
+
+forward prototypes
+global subroutine f_init_menu (m_gfiscc am)
+end prototypes
+
+global subroutine f_init_menu (m_gfiscc am);string	ls[4]
+int		li[3]
+menu		lm[10]
+ulong		lul
+
+lm={am.m_tool.m_uda.m_uda1,am.m_tool.m_uda.m_uda2,am.m_tool.m_uda.m_uda3,am.m_tool.m_uda.m_uda4,&
+	 am.m_tool.m_uda.m_uda5,am.m_tool.m_uda.m_uda6,am.m_tool.m_uda.m_uda7,am.m_tool.m_uda.m_uda8,&
+	 am.m_tool.m_uda.m_uda9,am.m_tool.m_uda.m_uda10}
+
+ls[1]=gnv_syscon.of_getgfidir()+"cnf\gfi.ini"
+for li[1]=1 to 10									// format: label;program;cmdline
+	ls[2]=Trim(ProfileString(ls[1],"User Defined Actions",String(li[1]),""))
+	if ls[2]<>"" then
+		li[2]=Pos(ls[2],";")
+		if li[2]>1 then
+			ls[3]=Trim(Mid(ls[2],li[2]+1))
+			ls[2]=Trim(Left(ls[2],li[2] - 1))
+			if ls[2]<>"" and ls[3]<>"" then
+				li[2]=Pos(ls[3],";")
+				if li[2]>0 then
+					ls[4]=" "+Trim(Mid(ls[3],li[2]+1))
+					ls[3]=Trim(Left(ls[3],li[2] - 1))
+				else
+					ls[4]=""
+				end if
+				
+				if ls[3]<>"" then
+					li[3]++
+					lm[li[3]].Text=ls[2]
+					lm[li[3]].Microhelp=ls[2]+" ("+ls[3]+")"
+					lm[li[3]].Tag=ls[3]+ls[4]
+				end if
+			end if
+		end if
+	end if
+next
+
+if li[3]>0 then
+	for li[1]=li[3]+1 to 10
+		lm[li[1]].Enabled=FALSE
+		lm[li[1]].Visible=FALSE
+	next
+else
+	am.m_tool.m_tool_bar2.Visible=FALSE
+	am.m_tool.m_uda.Visible=FALSE
+end if
+
+EXECUTE IMMEDIATE "SELECT 0 FROM gfi_fis_maf WHERE 1=2";
+if SQLCA.SQLCode<0 then
+	am.m_report.m_rpt_1.visible=FALSE
+	am.m_report.m_maf.visible=FALSE
+else
+	ls[1]="gfirptmf.exe"
+	if f_findfile(ls[1],FALSE)>0 then
+	else
+		am.m_report.m_rpt_1.visible=FALSE
+		am.m_report.m_maf.Visible=FALSE
+	end if
+end if
+
+EXECUTE IMMEDIATE "SELECT 0 FROM gfi_epay_card WHERE 1=2";
+if SQLCA.SQLCode<0 then
+	am.m_edit.m_editcfs.Visible=FALSE
+	am.m_edit.m_editcfs.ToolbarItemVisible=FALSE
+	am.m_edit.m_edit_0.Visible=FALSE
+
+	am.m_edit.m_autoload.Visible=FALSE
+
+	am.m_report.m_rpt_2.visible=FALSE
+	am.m_report.m_sch.visible=FALSE
+	am.m_report.m_ssm.visible=FALSE
+	am.m_report.m_srg.visible=FALSE
+	am.m_report.m_vcr.visible=FALSE
+	am.m_report.m_usd.visible=FALSE
+else
+	ls[1]="gfirptsc.exe"
+	if f_findfile(ls[1],FALSE)>0 then
+	else
+		am.m_report.m_ssm.Visible=FALSE
+	end if
+
+	ls[1]="gficfs.exe"
+	if f_findfile(ls[1],FALSE)>0 then
+	else
+		am.m_edit.m_editcfs.Visible=FALSE
+		am.m_edit.m_editcfs.ToolbarItemVisible=FALSE
+		am.m_edit.m_edit_0.Visible=FALSE
+	end if
+end if
+
+end subroutine
+

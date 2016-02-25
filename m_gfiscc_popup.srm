@@ -1,0 +1,1288 @@
+$PBExportHeader$m_gfiscc_popup.srm
+$PBExportComments$[GFISCC] GFI system control center popup menu
+forward
+global type m_gfiscc_popup from menu
+end type
+type m_map from menu within m_gfiscc_popup
+end type
+type m_selectall1 from menu within m_map
+end type
+type m_mapbar0 from menu within m_map
+end type
+type m_mapfind from menu within m_map
+end type
+type m_mapbar1 from menu within m_map
+end type
+type m_maphide from menu within m_map
+end type
+type m_mapinfo from menu within m_map
+end type
+type m_mapprint from menu within m_map
+end type
+type m_mapbar2 from menu within m_map
+end type
+type m_filter from menu within m_map
+end type
+type m_filter3 from menu within m_filter
+end type
+type m_filter2 from menu within m_filter
+end type
+type m_filter1 from menu within m_filter
+end type
+type m_filter0 from menu within m_filter
+end type
+type m_filter4 from menu within m_filter
+end type
+type m_filterall from menu within m_filter
+end type
+type m_filter from menu within m_map
+m_filter3 m_filter3
+m_filter2 m_filter2
+m_filter1 m_filter1
+m_filter0 m_filter0
+m_filter4 m_filter4
+m_filterall m_filterall
+end type
+type m_mapbar3 from menu within m_map
+end type
+type m_mapundo from menu within m_map
+end type
+type m_mapundoall from menu within m_map
+end type
+type m_map from menu within m_gfiscc_popup
+m_selectall1 m_selectall1
+m_mapbar0 m_mapbar0
+m_mapfind m_mapfind
+m_mapbar1 m_mapbar1
+m_maphide m_maphide
+m_mapinfo m_mapinfo
+m_mapprint m_mapprint
+m_mapbar2 m_mapbar2
+m_filter m_filter
+m_mapbar3 m_mapbar3
+m_mapundo m_mapundo
+m_mapundoall m_mapundoall
+end type
+type m_status from menu within m_gfiscc_popup
+end type
+type m_statusprint from menu within m_status
+end type
+type m_status from menu within m_gfiscc_popup
+m_statusprint m_statusprint
+end type
+type m_list from menu within m_gfiscc_popup
+end type
+type m_selectall2 from menu within m_list
+end type
+type m_listtype from menu within m_list
+end type
+type m_listsize from menu within m_list
+end type
+type m_listsize_n from menu within m_listsize
+end type
+type m_listsize_a from menu within m_listsize
+end type
+type m_listsize_i from menu within m_listsize
+end type
+type m_listsize_o from menu within m_listsize
+end type
+type m_listsize from menu within m_list
+m_listsize_n m_listsize_n
+m_listsize_a m_listsize_a
+m_listsize_i m_listsize_i
+m_listsize_o m_listsize_o
+end type
+type m_list_bar3 from menu within m_list
+end type
+type m_listfind from menu within m_list
+end type
+type m_list_bar2 from menu within m_list
+end type
+type m_listfilter from menu within m_list
+end type
+type m_listfilter3 from menu within m_listfilter
+end type
+type m_listfilter2 from menu within m_listfilter
+end type
+type m_listfilter1 from menu within m_listfilter
+end type
+type m_listfilter0 from menu within m_listfilter
+end type
+type m_listfilter4 from menu within m_listfilter
+end type
+type m_listfilterall from menu within m_listfilter
+end type
+type m_listfilter from menu within m_list
+m_listfilter3 m_listfilter3
+m_listfilter2 m_listfilter2
+m_listfilter1 m_listfilter1
+m_listfilter0 m_listfilter0
+m_listfilter4 m_listfilter4
+m_listfilterall m_listfilterall
+end type
+type m_list_bar1 from menu within m_list
+end type
+type m_listprint from menu within m_list
+end type
+type m_list from menu within m_gfiscc_popup
+m_selectall2 m_selectall2
+m_listtype m_listtype
+m_listsize m_listsize
+m_list_bar3 m_list_bar3
+m_listfind m_listfind
+m_list_bar2 m_list_bar2
+m_listfilter m_listfilter
+m_list_bar1 m_list_bar1
+m_listprint m_listprint
+end type
+type m_eq from menu within m_gfiscc_popup
+end type
+type m_reset from menu within m_eq
+end type
+type m_eq_bar1 from menu within m_eq
+end type
+type m_poll from menu within m_eq
+end type
+type m_sendcmd from menucascade within m_eq
+end type
+type m_insvc from menu within m_sendcmd
+end type
+type m_oos from menu within m_sendcmd
+end type
+type m_reboot from menu within m_sendcmd
+end type
+type m_shutdown from menu within m_sendcmd
+end type
+type m_sendcmd from menucascade within m_eq
+m_insvc m_insvc
+m_oos m_oos
+m_reboot m_reboot
+m_shutdown m_shutdown
+end type
+type m_sendfile from menucascade within m_eq
+end type
+type m_cfg from menu within m_sendfile
+end type
+type m_snd from menu within m_sendfile
+end type
+type m_all from menu within m_sendfile
+end type
+type m_sendfile from menucascade within m_eq
+m_cfg m_cfg
+m_snd m_snd
+m_all m_all
+end type
+type m_eq_bar2 from menu within m_eq
+end type
+type m_download from menu within m_eq
+end type
+type m_eq from menu within m_gfiscc_popup
+m_reset m_reset
+m_eq_bar1 m_eq_bar1
+m_poll m_poll
+m_sendcmd m_sendcmd
+m_sendfile m_sendfile
+m_eq_bar2 m_eq_bar2
+m_download m_download
+end type
+global type m_gfiscc_popup from menu
+m_map m_map
+m_status m_status
+m_list m_list
+m_eq m_eq
+end type
+end forward
+
+global type m_gfiscc_popup from menu
+m_map m_map
+m_status m_status
+m_list m_list
+m_eq m_eq
+end type
+global m_gfiscc_popup m_gfiscc_popup
+
+on m_gfiscc_popup.create
+m_gfiscc_popup=this
+call super::create
+this.m_map=create m_map
+this.m_status=create m_status
+this.m_list=create m_list
+this.m_eq=create m_eq
+this.Item[UpperBound(this.Item)+1]=this.m_map
+this.Item[UpperBound(this.Item)+1]=this.m_status
+this.Item[UpperBound(this.Item)+1]=this.m_list
+this.Item[UpperBound(this.Item)+1]=this.m_eq
+end on
+
+on m_gfiscc_popup.destroy
+call super::destroy
+destroy(this.m_map)
+destroy(this.m_status)
+destroy(this.m_list)
+destroy(this.m_eq)
+end on
+
+type m_map from menu within m_gfiscc_popup
+m_selectall1 m_selectall1
+m_mapbar0 m_mapbar0
+m_mapfind m_mapfind
+m_mapbar1 m_mapbar1
+m_maphide m_maphide
+m_mapinfo m_mapinfo
+m_mapprint m_mapprint
+m_mapbar2 m_mapbar2
+m_filter m_filter
+m_mapbar3 m_mapbar3
+m_mapundo m_mapundo
+m_mapundoall m_mapundoall
+end type
+
+on m_map.create
+call super::create
+this.text = "Map"
+this.m_selectall1=create m_selectall1
+this.m_mapbar0=create m_mapbar0
+this.m_mapfind=create m_mapfind
+this.m_mapbar1=create m_mapbar1
+this.m_maphide=create m_maphide
+this.m_mapinfo=create m_mapinfo
+this.m_mapprint=create m_mapprint
+this.m_mapbar2=create m_mapbar2
+this.m_filter=create m_filter
+this.m_mapbar3=create m_mapbar3
+this.m_mapundo=create m_mapundo
+this.m_mapundoall=create m_mapundoall
+this.Item[UpperBound(this.Item)+1]=this.m_selectall1
+this.Item[UpperBound(this.Item)+1]=this.m_mapbar0
+this.Item[UpperBound(this.Item)+1]=this.m_mapfind
+this.Item[UpperBound(this.Item)+1]=this.m_mapbar1
+this.Item[UpperBound(this.Item)+1]=this.m_maphide
+this.Item[UpperBound(this.Item)+1]=this.m_mapinfo
+this.Item[UpperBound(this.Item)+1]=this.m_mapprint
+this.Item[UpperBound(this.Item)+1]=this.m_mapbar2
+this.Item[UpperBound(this.Item)+1]=this.m_filter
+this.Item[UpperBound(this.Item)+1]=this.m_mapbar3
+this.Item[UpperBound(this.Item)+1]=this.m_mapundo
+this.Item[UpperBound(this.Item)+1]=this.m_mapundoall
+end on
+
+on m_map.destroy
+call super::destroy
+destroy(this.m_selectall1)
+destroy(this.m_mapbar0)
+destroy(this.m_mapfind)
+destroy(this.m_mapbar1)
+destroy(this.m_maphide)
+destroy(this.m_mapinfo)
+destroy(this.m_mapprint)
+destroy(this.m_mapbar2)
+destroy(this.m_filter)
+destroy(this.m_mapbar3)
+destroy(this.m_mapundo)
+destroy(this.m_mapundoall)
+end on
+
+type m_selectall1 from menu within m_map
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_selectall1.create
+call super::create
+this.tag = "SELECTALL"
+this.text = "Select all"
+end on
+
+on m_selectall1.destroy
+call super::destroy
+end on
+
+type m_mapbar0 from menu within m_map
+end type
+
+on m_mapbar0.create
+call super::create
+this.text = "-"
+end on
+
+on m_mapbar0.destroy
+call super::destroy
+end on
+
+type m_mapfind from menu within m_map
+end type
+
+on m_mapfind.create
+call super::create
+this.text = "Find"
+end on
+
+on m_mapfind.destroy
+call super::destroy
+end on
+
+type m_mapbar1 from menu within m_map
+end type
+
+on m_mapbar1.create
+call super::create
+this.text = "-"
+end on
+
+on m_mapbar1.destroy
+call super::destroy
+end on
+
+type m_maphide from menu within m_map
+end type
+
+on m_maphide.create
+call super::create
+this.tag = "MAPHIDE"
+this.text = "Hide map for 10 seconds"
+end on
+
+on m_maphide.destroy
+call super::destroy
+end on
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+type m_mapinfo from menu within m_map
+end type
+
+on m_mapinfo.create
+call super::create
+this.tag = "MAPINFO"
+this.text = "Map information"
+end on
+
+on m_mapinfo.destroy
+call super::destroy
+end on
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+type m_mapprint from menu within m_map
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_mapprint.create
+call super::create
+this.tag = "MAPPRINT"
+this.text = "Print map"
+end on
+
+on m_mapprint.destroy
+call super::destroy
+end on
+
+type m_mapbar2 from menu within m_map
+end type
+
+on m_mapbar2.create
+call super::create
+this.text = "-"
+end on
+
+on m_mapbar2.destroy
+call super::destroy
+end on
+
+type m_filter from menu within m_map
+m_filter3 m_filter3
+m_filter2 m_filter2
+m_filter1 m_filter1
+m_filter0 m_filter0
+m_filter4 m_filter4
+m_filterall m_filterall
+end type
+
+on m_filter.create
+call super::create
+this.text = "Filter"
+this.m_filter3=create m_filter3
+this.m_filter2=create m_filter2
+this.m_filter1=create m_filter1
+this.m_filter0=create m_filter0
+this.m_filter4=create m_filter4
+this.m_filterall=create m_filterall
+this.Item[UpperBound(this.Item)+1]=this.m_filter3
+this.Item[UpperBound(this.Item)+1]=this.m_filter2
+this.Item[UpperBound(this.Item)+1]=this.m_filter1
+this.Item[UpperBound(this.Item)+1]=this.m_filter0
+this.Item[UpperBound(this.Item)+1]=this.m_filter4
+this.Item[UpperBound(this.Item)+1]=this.m_filterall
+end on
+
+on m_filter.destroy
+call super::destroy
+destroy(this.m_filter3)
+destroy(this.m_filter2)
+destroy(this.m_filter1)
+destroy(this.m_filter0)
+destroy(this.m_filter4)
+destroy(this.m_filterall)
+end on
+
+type m_filter3 from menu within m_filter
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_filter3.create
+call super::create
+this.tag = "FILTER3"
+this.text = "Show TVMs with security alert"
+end on
+
+on m_filter3.destroy
+call super::destroy
+end on
+
+type m_filter2 from menu within m_filter
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_filter2.create
+call super::create
+this.tag = "FILTER2"
+this.text = "Show malfunction or out of service TVMs "
+end on
+
+on m_filter2.destroy
+call super::destroy
+end on
+
+type m_filter1 from menu within m_filter
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_filter1.create
+call super::create
+this.tag = "FILTER1"
+this.text = "Show being serviced or attention needed TVMs"
+end on
+
+on m_filter1.destroy
+call super::destroy
+end on
+
+type m_filter0 from menu within m_filter
+end type
+
+on m_filter0.create
+call super::create
+this.tag = "FILTER0"
+this.text = "Show TVMs operating normally"
+end on
+
+on m_filter0.destroy
+call super::destroy
+end on
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+type m_filter4 from menu within m_filter
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_filter4.create
+call super::create
+this.tag = "FILTER4"
+this.text = "Show disconnected TVMs"
+end on
+
+on m_filter4.destroy
+call super::destroy
+end on
+
+type m_filterall from menu within m_filter
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_filterall.create
+call super::create
+this.tag = "FILTERALL"
+this.text = "Show all TVMs"
+end on
+
+on m_filterall.destroy
+call super::destroy
+end on
+
+type m_mapbar3 from menu within m_map
+end type
+
+on m_mapbar3.create
+call super::create
+this.text = "-"
+end on
+
+on m_mapbar3.destroy
+call super::destroy
+end on
+
+type m_mapundo from menu within m_map
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_mapundo.create
+call super::create
+this.tag = "MAPUNDO"
+this.text = "Undo"
+end on
+
+on m_mapundo.destroy
+call super::destroy
+end on
+
+type m_mapundoall from menu within m_map
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_mapundoall.create
+call super::create
+this.tag = "MAPUNDOALL"
+this.text = "Undo all"
+end on
+
+on m_mapundoall.destroy
+call super::destroy
+end on
+
+type m_status from menu within m_gfiscc_popup
+m_statusprint m_statusprint
+end type
+
+on m_status.create
+call super::create
+this.text = "Status"
+this.m_statusprint=create m_statusprint
+this.Item[UpperBound(this.Item)+1]=this.m_statusprint
+end on
+
+on m_status.destroy
+call super::destroy
+destroy(this.m_statusprint)
+end on
+
+type m_statusprint from menu within m_status
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_statusprint.create
+call super::create
+this.tag = "STATUSPRINT"
+this.text = "Print"
+end on
+
+on m_statusprint.destroy
+call super::destroy
+end on
+
+type m_list from menu within m_gfiscc_popup
+m_selectall2 m_selectall2
+m_listtype m_listtype
+m_listsize m_listsize
+m_list_bar3 m_list_bar3
+m_listfind m_listfind
+m_list_bar2 m_list_bar2
+m_listfilter m_listfilter
+m_list_bar1 m_list_bar1
+m_listprint m_listprint
+end type
+
+on m_list.create
+call super::create
+this.text = "List"
+this.m_selectall2=create m_selectall2
+this.m_listtype=create m_listtype
+this.m_listsize=create m_listsize
+this.m_list_bar3=create m_list_bar3
+this.m_listfind=create m_listfind
+this.m_list_bar2=create m_list_bar2
+this.m_listfilter=create m_listfilter
+this.m_list_bar1=create m_list_bar1
+this.m_listprint=create m_listprint
+this.Item[UpperBound(this.Item)+1]=this.m_selectall2
+this.Item[UpperBound(this.Item)+1]=this.m_listtype
+this.Item[UpperBound(this.Item)+1]=this.m_listsize
+this.Item[UpperBound(this.Item)+1]=this.m_list_bar3
+this.Item[UpperBound(this.Item)+1]=this.m_listfind
+this.Item[UpperBound(this.Item)+1]=this.m_list_bar2
+this.Item[UpperBound(this.Item)+1]=this.m_listfilter
+this.Item[UpperBound(this.Item)+1]=this.m_list_bar1
+this.Item[UpperBound(this.Item)+1]=this.m_listprint
+end on
+
+on m_list.destroy
+call super::destroy
+destroy(this.m_selectall2)
+destroy(this.m_listtype)
+destroy(this.m_listsize)
+destroy(this.m_list_bar3)
+destroy(this.m_listfind)
+destroy(this.m_list_bar2)
+destroy(this.m_listfilter)
+destroy(this.m_list_bar1)
+destroy(this.m_listprint)
+end on
+
+type m_selectall2 from menu within m_list
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_selectall2.create
+call super::create
+this.tag = "SELECTALL"
+this.text = "Select all"
+end on
+
+on m_selectall2.destroy
+call super::destroy
+end on
+
+type m_listtype from menu within m_list
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_listtype.create
+call super::create
+this.tag = "SIMPLE"
+this.text = "Simple list"
+end on
+
+on m_listtype.destroy
+call super::destroy
+end on
+
+type m_listsize from menu within m_list
+m_listsize_n m_listsize_n
+m_listsize_a m_listsize_a
+m_listsize_i m_listsize_i
+m_listsize_o m_listsize_o
+end type
+
+on m_listsize.create
+call super::create
+this.text = "Size"
+this.m_listsize_n=create m_listsize_n
+this.m_listsize_a=create m_listsize_a
+this.m_listsize_i=create m_listsize_i
+this.m_listsize_o=create m_listsize_o
+this.Item[UpperBound(this.Item)+1]=this.m_listsize_n
+this.Item[UpperBound(this.Item)+1]=this.m_listsize_a
+this.Item[UpperBound(this.Item)+1]=this.m_listsize_i
+this.Item[UpperBound(this.Item)+1]=this.m_listsize_o
+end on
+
+on m_listsize.destroy
+call super::destroy
+destroy(this.m_listsize_n)
+destroy(this.m_listsize_a)
+destroy(this.m_listsize_i)
+destroy(this.m_listsize_o)
+end on
+
+type m_listsize_n from menu within m_listsize
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_listsize_n.create
+call super::create
+this.tag = "SIZEN"
+this.text = "Normal"
+end on
+
+on m_listsize_n.destroy
+call super::destroy
+end on
+
+type m_listsize_a from menu within m_listsize
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_listsize_a.create
+call super::create
+this.tag = "SIZEA"
+this.text = "Auto-Fit"
+end on
+
+on m_listsize_a.destroy
+call super::destroy
+end on
+
+type m_listsize_i from menu within m_listsize
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_listsize_i.create
+call super::create
+this.tag = "SIZEI"
+this.text = "Zoom In"
+end on
+
+on m_listsize_i.destroy
+call super::destroy
+end on
+
+type m_listsize_o from menu within m_listsize
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_listsize_o.create
+call super::create
+this.tag = "SIZEO"
+this.text = "Zoom Out"
+end on
+
+on m_listsize_o.destroy
+call super::destroy
+end on
+
+type m_list_bar3 from menu within m_list
+end type
+
+on m_list_bar3.create
+call super::create
+this.text = "-"
+end on
+
+on m_list_bar3.destroy
+call super::destroy
+end on
+
+type m_listfind from menu within m_list
+end type
+
+on m_listfind.create
+call super::create
+this.text = "Find"
+end on
+
+on m_listfind.destroy
+call super::destroy
+end on
+
+type m_list_bar2 from menu within m_list
+end type
+
+on m_list_bar2.create
+call super::create
+this.text = "-"
+end on
+
+on m_list_bar2.destroy
+call super::destroy
+end on
+
+type m_listfilter from menu within m_list
+m_listfilter3 m_listfilter3
+m_listfilter2 m_listfilter2
+m_listfilter1 m_listfilter1
+m_listfilter0 m_listfilter0
+m_listfilter4 m_listfilter4
+m_listfilterall m_listfilterall
+end type
+
+on m_listfilter.create
+call super::create
+this.text = "Filter"
+this.m_listfilter3=create m_listfilter3
+this.m_listfilter2=create m_listfilter2
+this.m_listfilter1=create m_listfilter1
+this.m_listfilter0=create m_listfilter0
+this.m_listfilter4=create m_listfilter4
+this.m_listfilterall=create m_listfilterall
+this.Item[UpperBound(this.Item)+1]=this.m_listfilter3
+this.Item[UpperBound(this.Item)+1]=this.m_listfilter2
+this.Item[UpperBound(this.Item)+1]=this.m_listfilter1
+this.Item[UpperBound(this.Item)+1]=this.m_listfilter0
+this.Item[UpperBound(this.Item)+1]=this.m_listfilter4
+this.Item[UpperBound(this.Item)+1]=this.m_listfilterall
+end on
+
+on m_listfilter.destroy
+call super::destroy
+destroy(this.m_listfilter3)
+destroy(this.m_listfilter2)
+destroy(this.m_listfilter1)
+destroy(this.m_listfilter0)
+destroy(this.m_listfilter4)
+destroy(this.m_listfilterall)
+end on
+
+type m_listfilter3 from menu within m_listfilter
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_listfilter3.create
+call super::create
+this.tag = "FILTER3"
+this.text = "Show TVMs with security alert"
+end on
+
+on m_listfilter3.destroy
+call super::destroy
+end on
+
+type m_listfilter2 from menu within m_listfilter
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_listfilter2.create
+call super::create
+this.tag = "FILTER2"
+this.text = "Show malfunction or out of service TVMs "
+end on
+
+on m_listfilter2.destroy
+call super::destroy
+end on
+
+type m_listfilter1 from menu within m_listfilter
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_listfilter1.create
+call super::create
+this.tag = "FILTER1"
+this.text = "Show being serviced or attention needed TVMs"
+end on
+
+on m_listfilter1.destroy
+call super::destroy
+end on
+
+type m_listfilter0 from menu within m_listfilter
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_listfilter0.create
+call super::create
+this.tag = "FILTER0"
+this.text = "Show TVMs operating normally"
+end on
+
+on m_listfilter0.destroy
+call super::destroy
+end on
+
+type m_listfilter4 from menu within m_listfilter
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_listfilter4.create
+call super::create
+this.tag = "FILTER4"
+this.text = "Show disconnected TVMs"
+end on
+
+on m_listfilter4.destroy
+call super::destroy
+end on
+
+type m_listfilterall from menu within m_listfilter
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_listfilterall.create
+call super::create
+this.tag = "FILTERALL"
+this.text = "Show all TVMs"
+end on
+
+on m_listfilterall.destroy
+call super::destroy
+end on
+
+type m_list_bar1 from menu within m_list
+end type
+
+on m_list_bar1.create
+call super::create
+this.text = "-"
+end on
+
+on m_list_bar1.destroy
+call super::destroy
+end on
+
+type m_listprint from menu within m_list
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_listprint.create
+call super::create
+this.tag = "LISTPRINT"
+this.text = "Print"
+end on
+
+on m_listprint.destroy
+call super::destroy
+end on
+
+type m_eq from menu within m_gfiscc_popup
+m_reset m_reset
+m_eq_bar1 m_eq_bar1
+m_poll m_poll
+m_sendcmd m_sendcmd
+m_sendfile m_sendfile
+m_eq_bar2 m_eq_bar2
+m_download m_download
+end type
+
+on m_eq.create
+call super::create
+this.text = "EQ"
+this.m_reset=create m_reset
+this.m_eq_bar1=create m_eq_bar1
+this.m_poll=create m_poll
+this.m_sendcmd=create m_sendcmd
+this.m_sendfile=create m_sendfile
+this.m_eq_bar2=create m_eq_bar2
+this.m_download=create m_download
+this.Item[UpperBound(this.Item)+1]=this.m_reset
+this.Item[UpperBound(this.Item)+1]=this.m_eq_bar1
+this.Item[UpperBound(this.Item)+1]=this.m_poll
+this.Item[UpperBound(this.Item)+1]=this.m_sendcmd
+this.Item[UpperBound(this.Item)+1]=this.m_sendfile
+this.Item[UpperBound(this.Item)+1]=this.m_eq_bar2
+this.Item[UpperBound(this.Item)+1]=this.m_download
+end on
+
+on m_eq.destroy
+call super::destroy
+destroy(this.m_reset)
+destroy(this.m_eq_bar1)
+destroy(this.m_poll)
+destroy(this.m_sendcmd)
+destroy(this.m_sendfile)
+destroy(this.m_eq_bar2)
+destroy(this.m_download)
+end on
+
+type m_reset from menu within m_eq
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_reset.create
+call super::create
+this.text = "Reset"
+end on
+
+on m_reset.destroy
+call super::destroy
+end on
+
+type m_eq_bar1 from menu within m_eq
+end type
+
+on m_eq_bar1.create
+call super::create
+this.text = "-"
+end on
+
+on m_eq_bar1.destroy
+call super::destroy
+end on
+
+type m_poll from menu within m_eq
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_poll.create
+call super::create
+this.text = "Poll"
+this.toolbaritemvisible = false
+end on
+
+on m_poll.destroy
+call super::destroy
+end on
+
+type m_sendcmd from menucascade within m_eq
+m_insvc m_insvc
+m_oos m_oos
+m_reboot m_reboot
+m_shutdown m_shutdown
+end type
+
+on m_sendcmd.create
+call super::create
+this.text = "Send Command"
+this.toolbaritemvisible = false
+this.toolbaritembarindex = 0
+this.m_insvc=create m_insvc
+this.m_oos=create m_oos
+this.m_reboot=create m_reboot
+this.m_shutdown=create m_shutdown
+this.Item[UpperBound(this.Item)+1]=this.m_insvc
+this.Item[UpperBound(this.Item)+1]=this.m_oos
+this.Item[UpperBound(this.Item)+1]=this.m_reboot
+this.Item[UpperBound(this.Item)+1]=this.m_shutdown
+end on
+
+on m_sendcmd.destroy
+call super::destroy
+destroy(this.m_insvc)
+destroy(this.m_oos)
+destroy(this.m_reboot)
+destroy(this.m_shutdown)
+end on
+
+type m_insvc from menu within m_sendcmd
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(Tag)
+
+end event
+
+on m_insvc.create
+call super::create
+this.text = "In Service"
+this.toolbaritemvisible = false
+this.toolbaritemtext = "Set selected equipment(s) into service mode"
+this.toolbaritembarindex = 0
+end on
+
+on m_insvc.destroy
+call super::destroy
+end on
+
+type m_oos from menu within m_sendcmd
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(Tag)
+end event
+
+on m_oos.create
+call super::create
+this.text = "Out of Service"
+this.toolbaritemvisible = false
+this.toolbaritembarindex = 0
+end on
+
+on m_oos.destroy
+call super::destroy
+end on
+
+type m_reboot from menu within m_sendcmd
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(Tag)
+
+end event
+
+on m_reboot.create
+call super::create
+this.text = "Reboot"
+this.toolbaritemvisible = false
+end on
+
+on m_reboot.destroy
+call super::destroy
+end on
+
+type m_shutdown from menu within m_sendcmd
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(Tag)
+
+end event
+
+on m_shutdown.create
+call super::create
+this.text = "Shutdown"
+this.toolbaritemvisible = false
+end on
+
+on m_shutdown.destroy
+call super::destroy
+end on
+
+type m_sendfile from menucascade within m_eq
+m_cfg m_cfg
+m_snd m_snd
+m_all m_all
+end type
+
+on m_sendfile.create
+call super::create
+this.text = "Send File"
+this.toolbaritemvisible = false
+this.toolbaritembarindex = 0
+this.m_cfg=create m_cfg
+this.m_snd=create m_snd
+this.m_all=create m_all
+this.Item[UpperBound(this.Item)+1]=this.m_cfg
+this.Item[UpperBound(this.Item)+1]=this.m_snd
+this.Item[UpperBound(this.Item)+1]=this.m_all
+end on
+
+on m_sendfile.destroy
+call super::destroy
+destroy(this.m_cfg)
+destroy(this.m_snd)
+destroy(this.m_all)
+end on
+
+type m_cfg from menu within m_sendfile
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(Tag)
+
+end event
+
+on m_cfg.create
+call super::create
+this.text = "Configuration"
+this.toolbaritemvisible = false
+end on
+
+on m_cfg.destroy
+call super::destroy
+end on
+
+type m_snd from menu within m_sendfile
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(Tag)
+
+end event
+
+on m_snd.create
+call super::create
+this.text = "Sound"
+this.toolbaritemvisible = false
+end on
+
+on m_snd.destroy
+call super::destroy
+end on
+
+type m_all from menu within m_sendfile
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(Tag)
+
+end event
+
+on m_all.create
+call super::create
+this.text = "All"
+this.toolbaritemvisible = false
+end on
+
+on m_all.destroy
+call super::destroy
+end on
+
+type m_eq_bar2 from menu within m_eq
+end type
+
+on m_eq_bar2.create
+call super::create
+this.text = "-"
+end on
+
+on m_eq_bar2.destroy
+call super::destroy
+end on
+
+type m_download from menu within m_eq
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_download.create
+call super::create
+this.text = "Download File"
+end on
+
+on m_download.destroy
+call super::destroy
+end on
+

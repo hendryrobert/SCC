@@ -1,0 +1,2194 @@
+$PBExportHeader$m_gfiscc.srm
+$PBExportComments$GFI system control center menu
+forward
+global type m_gfiscc from menu
+end type
+type m_file from menu within m_gfiscc
+end type
+type m_view from menu within m_file
+end type
+type m_pem from menu within m_file
+end type
+type m_file_bar0 from menu within m_file
+end type
+type m_poll from menu within m_file
+end type
+type m_sendcmd from menucascade within m_file
+end type
+type m_cmdinsvc from menu within m_sendcmd
+end type
+type m_cmdoos from menu within m_sendcmd
+end type
+type m_cmdreboot from menu within m_sendcmd
+end type
+type m_cmdshutdown from menu within m_sendcmd
+end type
+type m_sendcmd from menucascade within m_file
+m_cmdinsvc m_cmdinsvc
+m_cmdoos m_cmdoos
+m_cmdreboot m_cmdreboot
+m_cmdshutdown m_cmdshutdown
+end type
+type m_sendfile from menucascade within m_file
+end type
+type m_filecfg from menu within m_sendfile
+end type
+type m_filesnd from menu within m_sendfile
+end type
+type m_fileall from menu within m_sendfile
+end type
+type m_sendfile from menucascade within m_file
+m_filecfg m_filecfg
+m_filesnd m_filesnd
+m_fileall m_fileall
+end type
+type m_file_bar1 from menu within m_file
+end type
+type m_logview from menu within m_file
+end type
+type m_gfifmon from menu within m_file
+end type
+type m_gfievmon from menu within m_file
+end type
+type m_file_bar2 from menu within m_file
+end type
+type m_run from menu within m_file
+end type
+type m_file_bar3 from menu within m_file
+end type
+type m_chpwd from menu within m_file
+end type
+type m_file_bar4 from menu within m_file
+end type
+type m_printscreen from menu within m_file
+end type
+type m_file_bar5 from menu within m_file
+end type
+type m_exit from menu within m_file
+end type
+type m_file from menu within m_gfiscc
+m_view m_view
+m_pem m_pem
+m_file_bar0 m_file_bar0
+m_poll m_poll
+m_sendcmd m_sendcmd
+m_sendfile m_sendfile
+m_file_bar1 m_file_bar1
+m_logview m_logview
+m_gfifmon m_gfifmon
+m_gfievmon m_gfievmon
+m_file_bar2 m_file_bar2
+m_run m_run
+m_file_bar3 m_file_bar3
+m_chpwd m_chpwd
+m_file_bar4 m_file_bar4
+m_printscreen m_printscreen
+m_file_bar5 m_file_bar5
+m_exit m_exit
+end type
+type m_edit from menu within m_gfiscc
+end type
+type m_editcfs from menu within m_edit
+end type
+type m_edit_0 from menu within m_edit
+end type
+type m_editlite from menu within m_edit
+end type
+type m_autoload from menu within m_edit
+end type
+type m_edit_1 from menu within m_edit
+end type
+type m_editloc from menu within m_edit
+end type
+type m_editeq from menu within m_edit
+end type
+type m_editlist from menu within m_edit
+end type
+type m_editdef from menu within m_edit
+end type
+type m_editalm from menu within m_edit
+end type
+type m_editmod from menu within m_edit
+end type
+type m_editmnt from menu within m_edit
+end type
+type m_editfic from menu within m_edit
+end type
+type m_edit from menu within m_gfiscc
+m_editcfs m_editcfs
+m_edit_0 m_edit_0
+m_editlite m_editlite
+m_autoload m_autoload
+m_edit_1 m_edit_1
+m_editloc m_editloc
+m_editeq m_editeq
+m_editlist m_editlist
+m_editdef m_editdef
+m_editalm m_editalm
+m_editmod m_editmod
+m_editmnt m_editmnt
+m_editfic m_editfic
+end type
+type m_tool from menu within m_gfiscc
+end type
+type m_mapeq from menu within m_tool
+end type
+type m_tool_bar1 from menu within m_tool
+end type
+type m_query from menu within m_tool
+end type
+type m_gfidba from menu within m_tool
+end type
+type m_alert from menu within m_tool
+end type
+type m_tool_bar2 from menu within m_tool
+end type
+type m_uda from menu within m_tool
+end type
+type m_uda1 from menu within m_uda
+end type
+type m_uda2 from menu within m_uda
+end type
+type m_uda3 from menu within m_uda
+end type
+type m_uda4 from menu within m_uda
+end type
+type m_uda5 from menu within m_uda
+end type
+type m_uda6 from menu within m_uda
+end type
+type m_uda7 from menu within m_uda
+end type
+type m_uda8 from menu within m_uda
+end type
+type m_uda9 from menu within m_uda
+end type
+type m_uda10 from menu within m_uda
+end type
+type m_uda from menu within m_tool
+m_uda1 m_uda1
+m_uda2 m_uda2
+m_uda3 m_uda3
+m_uda4 m_uda4
+m_uda5 m_uda5
+m_uda6 m_uda6
+m_uda7 m_uda7
+m_uda8 m_uda8
+m_uda9 m_uda9
+m_uda10 m_uda10
+end type
+type m_tool from menu within m_gfiscc
+m_mapeq m_mapeq
+m_tool_bar1 m_tool_bar1
+m_query m_query
+m_gfidba m_gfidba
+m_alert m_alert
+m_tool_bar2 m_tool_bar2
+m_uda m_uda
+end type
+type m_report from menu within m_gfiscc
+end type
+type m_pss from menu within m_report
+end type
+type m_bct from menu within m_report
+end type
+type m_dpt from menu within m_report
+end type
+type m_dtr from menu within m_report
+end type
+type m_lcr from menu within m_report
+end type
+type m_crr from menu within m_report
+end type
+type m_evl from menu within m_report
+end type
+type m_smr from menu within m_report
+end type
+type m_rpl from menu within m_report
+end type
+type m_mir from menu within m_report
+end type
+type m_ami from menu within m_report
+end type
+type m_xcp from menu within m_report
+end type
+type m_scr from menu within m_report
+end type
+type m_emp from menu within m_report
+end type
+type m_3pb from menu within m_report
+end type
+type m_mmr from menu within m_report
+end type
+type m_fic from menu within m_report
+end type
+type m_tvmcashonhandreport from menu within m_report
+end type
+type m_rpt_1 from menu within m_report
+end type
+type m_maf from menu within m_report
+end type
+type m_rpt_2 from menu within m_report
+end type
+type m_sch from menu within m_report
+end type
+type m_ssm from menu within m_report
+end type
+type m_srg from menu within m_report
+end type
+type m_vcr from menu within m_report
+end type
+type m_usd from menu within m_report
+end type
+type m_report from menu within m_gfiscc
+m_pss m_pss
+m_bct m_bct
+m_dpt m_dpt
+m_dtr m_dtr
+m_lcr m_lcr
+m_crr m_crr
+m_evl m_evl
+m_smr m_smr
+m_rpl m_rpl
+m_mir m_mir
+m_ami m_ami
+m_xcp m_xcp
+m_scr m_scr
+m_emp m_emp
+m_3pb m_3pb
+m_mmr m_mmr
+m_fic m_fic
+m_tvmcashonhandreport m_tvmcashonhandreport
+m_rpt_1 m_rpt_1
+m_maf m_maf
+m_rpt_2 m_rpt_2
+m_sch m_sch
+m_ssm m_ssm
+m_srg m_srg
+m_vcr m_vcr
+m_usd m_usd
+end type
+type m_help from menu within m_gfiscc
+end type
+type m_userguide from menu within m_help
+end type
+type m_about from menu within m_help
+end type
+type m_help from menu within m_gfiscc
+m_userguide m_userguide
+m_about m_about
+end type
+global type m_gfiscc from menu
+m_file m_file
+m_edit m_edit
+m_tool m_tool
+m_report m_report
+m_help m_help
+end type
+end forward
+
+global type m_gfiscc from menu
+m_file m_file
+m_edit m_edit
+m_tool m_tool
+m_report m_report
+m_help m_help
+end type
+global m_gfiscc m_gfiscc
+
+on m_gfiscc.create
+m_gfiscc=this
+call super::create
+this.text = "m_vipmon"
+this.m_file=create m_file
+this.m_edit=create m_edit
+this.m_tool=create m_tool
+this.m_report=create m_report
+this.m_help=create m_help
+this.Item[UpperBound(this.Item)+1]=this.m_file
+this.Item[UpperBound(this.Item)+1]=this.m_edit
+this.Item[UpperBound(this.Item)+1]=this.m_tool
+this.Item[UpperBound(this.Item)+1]=this.m_report
+this.Item[UpperBound(this.Item)+1]=this.m_help
+end on
+
+on m_gfiscc.destroy
+call super::destroy
+destroy(this.m_file)
+destroy(this.m_edit)
+destroy(this.m_tool)
+destroy(this.m_report)
+destroy(this.m_help)
+end on
+
+type m_file from menu within m_gfiscc
+m_view m_view
+m_pem m_pem
+m_file_bar0 m_file_bar0
+m_poll m_poll
+m_sendcmd m_sendcmd
+m_sendfile m_sendfile
+m_file_bar1 m_file_bar1
+m_logview m_logview
+m_gfifmon m_gfifmon
+m_gfievmon m_gfievmon
+m_file_bar2 m_file_bar2
+m_run m_run
+m_file_bar3 m_file_bar3
+m_chpwd m_chpwd
+m_file_bar4 m_file_bar4
+m_printscreen m_printscreen
+m_file_bar5 m_file_bar5
+m_exit m_exit
+end type
+
+on m_file.create
+call super::create
+this.text = "&File"
+this.toolbaritemvisible = false
+this.m_view=create m_view
+this.m_pem=create m_pem
+this.m_file_bar0=create m_file_bar0
+this.m_poll=create m_poll
+this.m_sendcmd=create m_sendcmd
+this.m_sendfile=create m_sendfile
+this.m_file_bar1=create m_file_bar1
+this.m_logview=create m_logview
+this.m_gfifmon=create m_gfifmon
+this.m_gfievmon=create m_gfievmon
+this.m_file_bar2=create m_file_bar2
+this.m_run=create m_run
+this.m_file_bar3=create m_file_bar3
+this.m_chpwd=create m_chpwd
+this.m_file_bar4=create m_file_bar4
+this.m_printscreen=create m_printscreen
+this.m_file_bar5=create m_file_bar5
+this.m_exit=create m_exit
+this.Item[UpperBound(this.Item)+1]=this.m_view
+this.Item[UpperBound(this.Item)+1]=this.m_pem
+this.Item[UpperBound(this.Item)+1]=this.m_file_bar0
+this.Item[UpperBound(this.Item)+1]=this.m_poll
+this.Item[UpperBound(this.Item)+1]=this.m_sendcmd
+this.Item[UpperBound(this.Item)+1]=this.m_sendfile
+this.Item[UpperBound(this.Item)+1]=this.m_file_bar1
+this.Item[UpperBound(this.Item)+1]=this.m_logview
+this.Item[UpperBound(this.Item)+1]=this.m_gfifmon
+this.Item[UpperBound(this.Item)+1]=this.m_gfievmon
+this.Item[UpperBound(this.Item)+1]=this.m_file_bar2
+this.Item[UpperBound(this.Item)+1]=this.m_run
+this.Item[UpperBound(this.Item)+1]=this.m_file_bar3
+this.Item[UpperBound(this.Item)+1]=this.m_chpwd
+this.Item[UpperBound(this.Item)+1]=this.m_file_bar4
+this.Item[UpperBound(this.Item)+1]=this.m_printscreen
+this.Item[UpperBound(this.Item)+1]=this.m_file_bar5
+this.Item[UpperBound(this.Item)+1]=this.m_exit
+end on
+
+on m_file.destroy
+call super::destroy
+destroy(this.m_view)
+destroy(this.m_pem)
+destroy(this.m_file_bar0)
+destroy(this.m_poll)
+destroy(this.m_sendcmd)
+destroy(this.m_sendfile)
+destroy(this.m_file_bar1)
+destroy(this.m_logview)
+destroy(this.m_gfifmon)
+destroy(this.m_gfievmon)
+destroy(this.m_file_bar2)
+destroy(this.m_run)
+destroy(this.m_file_bar3)
+destroy(this.m_chpwd)
+destroy(this.m_file_bar4)
+destroy(this.m_printscreen)
+destroy(this.m_file_bar5)
+destroy(this.m_exit)
+end on
+
+type m_view from menu within m_file
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_view.create
+call super::create
+this.tag = "VIEWMAP"
+this.text = "Street &View~tF10"
+this.shortcut = 121
+this.microhelp = "Switch to street view"
+this.toolbaritemname = "gfistview.ico"
+this.toolbaritemtext = "Switch to street view"
+this.toolbaritemorder = 1
+end on
+
+on m_view.destroy
+call super::destroy
+end on
+
+type m_pem from menu within m_file
+end type
+
+on m_pem.create
+call super::create
+this.tag = "PEM"
+this.text = "&PEM Status Monitor"
+this.microhelp = "Monitor PEM status"
+this.toolbaritemname = "gfieqpem.ico"
+this.toolbaritemtext = "Monitor PEM status"
+this.toolbaritemorder = 2
+end on
+
+on m_pem.destroy
+call super::destroy
+end on
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+type m_file_bar0 from menu within m_file
+end type
+
+on m_file_bar0.create
+call super::create
+this.text = "-"
+end on
+
+on m_file_bar0.destroy
+call super::destroy
+end on
+
+type m_poll from menu within m_file
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent("POLL")
+
+end event
+
+on m_poll.create
+call super::create
+this.text = "P&oll~tF2"
+this.shortcut = 113
+this.microhelp = "Poll selected equipment(s) for status and transactions"
+this.toolbaritemname = "gfipoll.ico"
+this.toolbaritemtext = "Poll selected equipment(s) for status and transactions"
+this.toolbaritemorder = 10
+this.toolbaritemspace = 1
+end on
+
+on m_poll.destroy
+call super::destroy
+end on
+
+type m_sendcmd from menucascade within m_file
+m_cmdinsvc m_cmdinsvc
+m_cmdoos m_cmdoos
+m_cmdreboot m_cmdreboot
+m_cmdshutdown m_cmdshutdown
+end type
+
+on m_sendcmd.create
+call super::create
+this.text = "&Send Command"
+this.microhelp = "Send command to selected equipment(s)"
+this.toolbaritemvisible = false
+this.toolbaritembarindex = 0
+this.columns = 0
+this.m_cmdinsvc=create m_cmdinsvc
+this.m_cmdoos=create m_cmdoos
+this.m_cmdreboot=create m_cmdreboot
+this.m_cmdshutdown=create m_cmdshutdown
+this.Item[UpperBound(this.Item)+1]=this.m_cmdinsvc
+this.Item[UpperBound(this.Item)+1]=this.m_cmdoos
+this.Item[UpperBound(this.Item)+1]=this.m_cmdreboot
+this.Item[UpperBound(this.Item)+1]=this.m_cmdshutdown
+end on
+
+on m_sendcmd.destroy
+call super::destroy
+destroy(this.m_cmdinsvc)
+destroy(this.m_cmdoos)
+destroy(this.m_cmdreboot)
+destroy(this.m_cmdshutdown)
+end on
+
+type m_cmdinsvc from menu within m_sendcmd
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent("CMDINSVC")
+
+end event
+
+on m_cmdinsvc.create
+call super::create
+this.text = "&In Service"
+this.microhelp = "Set selected equipment(s) into service mode"
+this.toolbaritemname = "led_g.ico"
+this.toolbaritemtext = "Set selected equipment(s) into service mode"
+this.toolbaritemorder = 21
+this.toolbaritemspace = 1
+end on
+
+on m_cmdinsvc.destroy
+call super::destroy
+end on
+
+type m_cmdoos from menu within m_sendcmd
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent("CMDOOS")
+end event
+
+on m_cmdoos.create
+call super::create
+this.text = "&Out of Service"
+this.microhelp = "Take selected equipment(s) out of service"
+this.toolbaritemname = "led_r.ico"
+this.toolbaritemtext = "Take selected equipment(s) out of service"
+this.toolbaritemorder = 23
+end on
+
+on m_cmdoos.destroy
+call super::destroy
+end on
+
+type m_cmdreboot from menu within m_sendcmd
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent("CMDREBOOT")
+
+end event
+
+on m_cmdreboot.create
+call super::create
+this.text = "&Reboot"
+this.microhelp = "Reboot selected equipment(s)"
+this.toolbaritemname = "gfireboot.ico"
+this.toolbaritemtext = "Reboot selected equipment(s)"
+this.toolbaritemorder = 25
+end on
+
+on m_cmdreboot.destroy
+call super::destroy
+end on
+
+type m_cmdshutdown from menu within m_sendcmd
+end type
+
+on m_cmdshutdown.create
+call super::create
+this.text = "&Shutdown"
+this.microhelp = "Shutdown selected equipment(s)"
+this.toolbaritemname = "gfishutdown.ico"
+this.toolbaritemtext = "Shutdown selected equipment(s)"
+this.toolbaritemorder = 27
+end on
+
+on m_cmdshutdown.destroy
+call super::destroy
+end on
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent("CMDSHUTDOWN")
+
+end event
+
+type m_sendfile from menucascade within m_file
+m_filecfg m_filecfg
+m_filesnd m_filesnd
+m_fileall m_fileall
+end type
+
+on m_sendfile.create
+call super::create
+this.text = "Send &File"
+this.microhelp = "Send file to selected equipment(s)"
+this.toolbaritemvisible = false
+this.toolbaritembarindex = 0
+this.columns = 0
+this.m_filecfg=create m_filecfg
+this.m_filesnd=create m_filesnd
+this.m_fileall=create m_fileall
+this.Item[UpperBound(this.Item)+1]=this.m_filecfg
+this.Item[UpperBound(this.Item)+1]=this.m_filesnd
+this.Item[UpperBound(this.Item)+1]=this.m_fileall
+end on
+
+on m_sendfile.destroy
+call super::destroy
+destroy(this.m_filecfg)
+destroy(this.m_filesnd)
+destroy(this.m_fileall)
+end on
+
+type m_filecfg from menu within m_sendfile
+end type
+
+on m_filecfg.create
+call super::create
+this.text = "&Configuration"
+this.microhelp = "Send configuration settings to selected equipment(s)"
+this.toolbaritemname = "gficfg.ico"
+this.toolbaritemtext = "Send configuration settings to selected equipment(s)"
+this.toolbaritemorder = 43
+this.toolbaritemspace = 1
+end on
+
+on m_filecfg.destroy
+call super::destroy
+end on
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent("FILECFG")
+
+end event
+
+type m_filesnd from menu within m_sendfile
+end type
+
+on m_filesnd.create
+call super::create
+this.text = "&Sound"
+this.microhelp = "Send sound file(s) to selected equipment(s)"
+this.toolbaritemname = "gfisound.ico"
+this.toolbaritemtext = "Send sound file(s) to selected equipment(s)"
+this.toolbaritemorder = 45
+end on
+
+on m_filesnd.destroy
+call super::destroy
+end on
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent("FILESND")
+
+end event
+
+type m_fileall from menu within m_sendfile
+end type
+
+on m_fileall.create
+call super::create
+this.text = "&All"
+this.microhelp = "Send all configuration files to selected equipment(s)"
+this.toolbaritemname = "gfisort.ico"
+this.toolbaritemtext = "Send all configuration files to selected equipment(s)"
+this.toolbaritemorder = 47
+end on
+
+on m_fileall.destroy
+call super::destroy
+end on
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent("FILEALL")
+
+end event
+
+type m_file_bar1 from menu within m_file
+end type
+
+on m_file_bar1.create
+call super::create
+this.text = "-"
+end on
+
+on m_file_bar1.destroy
+call super::destroy
+end on
+
+type m_logview from menu within m_file
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent("LOGVIEW")
+
+end event
+
+on m_logview.create
+call super::create
+this.text = "&Log File Viewer"
+this.microhelp = "Launch Genfare log file viewer"
+this.toolbaritemvisible = false
+this.toolbaritemorder = 55
+this.toolbaritemspace = 1
+end on
+
+on m_logview.destroy
+call super::destroy
+end on
+
+type m_gfifmon from menu within m_file
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent("GFIFMON")
+
+end event
+
+on m_gfifmon.create
+call super::create
+this.text = "Log File &Monitor"
+this.microhelp = "Monitor Genfare log file"
+this.toolbaritemname = "gfifmon.ico"
+this.toolbaritemtext = "Monitor Genfare log file"
+this.toolbaritemorder = 56
+this.toolbaritemspace = 1
+end on
+
+on m_gfifmon.destroy
+call super::destroy
+end on
+
+type m_gfievmon from menu within m_file
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent("GFIEVMON")
+
+end event
+
+on m_gfievmon.create
+call super::create
+this.text = "&Event Monitor"
+this.microhelp = "Monitor events and transactions"
+this.toolbaritemname = "gfievmon.ico"
+this.toolbaritemtext = "Monitor events and transactions"
+this.toolbaritemorder = 58
+end on
+
+on m_gfievmon.destroy
+call super::destroy
+end on
+
+type m_file_bar2 from menu within m_file
+end type
+
+on m_file_bar2.create
+call super::create
+this.text = "-"
+this.enabled = false
+end on
+
+on m_file_bar2.destroy
+call super::destroy
+end on
+
+type m_run from menu within m_file
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent("RUN")
+end event
+
+on m_run.create
+call super::create
+this.text = "&Run~tCtrl+R"
+this.shortcut = 338
+this.microhelp = "Open a program, folder, document, or web site"
+this.toolbaritemname = "gfirun.ico"
+this.toolbaritemtext = "Open program/folder/document/web site"
+this.toolbaritemorder = 990
+this.toolbaritemspace = 1
+end on
+
+on m_run.destroy
+call super::destroy
+end on
+
+type m_file_bar3 from menu within m_file
+end type
+
+on m_file_bar3.create
+call super::create
+this.text = "-"
+this.enabled = false
+end on
+
+on m_file_bar3.destroy
+call super::destroy
+end on
+
+type m_chpwd from menu within m_file
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent("CHPWD")
+end event
+
+on m_chpwd.create
+call super::create
+this.text = "&Change Password"
+this.microhelp = "Change password"
+end on
+
+on m_chpwd.destroy
+call super::destroy
+end on
+
+type m_file_bar4 from menu within m_file
+end type
+
+on m_file_bar4.create
+call super::create
+this.text = "-"
+end on
+
+on m_file_bar4.destroy
+call super::destroy
+end on
+
+type m_printscreen from menu within m_file
+end type
+
+on m_printscreen.create
+call super::create
+this.text = "Pr&int Screen~tCtrl+P"
+this.shortcut = 336
+this.microhelp = "Print screen"
+this.toolbaritemname = "screen.ico"
+this.toolbaritemtext = "Print screen"
+this.toolbaritemorder = 995
+this.toolbaritemspace = 1
+end on
+
+on m_printscreen.destroy
+call super::destroy
+end on
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent("SCREEN")
+end event
+
+type m_file_bar5 from menu within m_file
+end type
+
+on m_file_bar5.create
+call super::create
+this.text = "-"
+end on
+
+on m_file_bar5.destroy
+call super::destroy
+end on
+
+type m_exit from menu within m_file
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent("EXIT")
+end event
+
+on m_exit.create
+call super::create
+this.text = "E&xit"
+this.microhelp = "Exit the application"
+this.toolbaritemname = "gfiexit.ico"
+this.toolbaritemtext = "Exit the application"
+this.toolbaritemorder = 1000
+this.toolbaritemspace = 1
+end on
+
+on m_exit.destroy
+call super::destroy
+end on
+
+type m_edit from menu within m_gfiscc
+m_editcfs m_editcfs
+m_edit_0 m_edit_0
+m_editlite m_editlite
+m_autoload m_autoload
+m_edit_1 m_edit_1
+m_editloc m_editloc
+m_editeq m_editeq
+m_editlist m_editlist
+m_editdef m_editdef
+m_editalm m_editalm
+m_editmod m_editmod
+m_editmnt m_editmnt
+m_editfic m_editfic
+end type
+
+on m_edit.create
+call super::create
+this.text = "&Edit"
+this.m_editcfs=create m_editcfs
+this.m_edit_0=create m_edit_0
+this.m_editlite=create m_editlite
+this.m_autoload=create m_autoload
+this.m_edit_1=create m_edit_1
+this.m_editloc=create m_editloc
+this.m_editeq=create m_editeq
+this.m_editlist=create m_editlist
+this.m_editdef=create m_editdef
+this.m_editalm=create m_editalm
+this.m_editmod=create m_editmod
+this.m_editmnt=create m_editmnt
+this.m_editfic=create m_editfic
+this.Item[UpperBound(this.Item)+1]=this.m_editcfs
+this.Item[UpperBound(this.Item)+1]=this.m_edit_0
+this.Item[UpperBound(this.Item)+1]=this.m_editlite
+this.Item[UpperBound(this.Item)+1]=this.m_autoload
+this.Item[UpperBound(this.Item)+1]=this.m_edit_1
+this.Item[UpperBound(this.Item)+1]=this.m_editloc
+this.Item[UpperBound(this.Item)+1]=this.m_editeq
+this.Item[UpperBound(this.Item)+1]=this.m_editlist
+this.Item[UpperBound(this.Item)+1]=this.m_editdef
+this.Item[UpperBound(this.Item)+1]=this.m_editalm
+this.Item[UpperBound(this.Item)+1]=this.m_editmod
+this.Item[UpperBound(this.Item)+1]=this.m_editmnt
+this.Item[UpperBound(this.Item)+1]=this.m_editfic
+end on
+
+on m_edit.destroy
+call super::destroy
+destroy(this.m_editcfs)
+destroy(this.m_edit_0)
+destroy(this.m_editlite)
+destroy(this.m_autoload)
+destroy(this.m_edit_1)
+destroy(this.m_editloc)
+destroy(this.m_editeq)
+destroy(this.m_editlist)
+destroy(this.m_editdef)
+destroy(this.m_editalm)
+destroy(this.m_editmod)
+destroy(this.m_editmnt)
+destroy(this.m_editfic)
+end on
+
+event clicked;string	ls_file[]
+
+if gnv_syscon.inv_shell.of_dirlist(gnv_syscon.of_getgfidir()+"cnf\TVM\gfi.sqlite*.*",ls_file)>0 then
+	m_editlite.Enabled=TRUE
+else
+	m_editlite.Enabled=FALSE
+end if
+
+end event
+
+type m_editcfs from menu within m_edit
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+end event
+
+on m_editcfs.create
+call super::create
+this.tag = "EDITCFS"
+this.text = "Common Fare &Structure Editor"
+this.microhelp = "Launch the common fare structure editor"
+this.toolbaritemname = "gficfs.ico"
+this.toolbaritemdownname = "gficfs.ico"
+this.toolbaritemtext = "Common Fare Structure Editor"
+this.toolbaritemorder = 15
+this.toolbaritemspace = 1
+end on
+
+on m_editcfs.destroy
+call super::destroy
+end on
+
+type m_edit_0 from menu within m_edit
+end type
+
+on m_edit_0.create
+call super::create
+this.text = "-"
+end on
+
+on m_edit_0.destroy
+call super::destroy
+end on
+
+type m_editlite from menu within m_edit
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_editlite.create
+call super::create
+this.tag = "EDITLITE"
+this.text = "TVM Configuration"
+this.microhelp = "Edit TVM configuration"
+end on
+
+on m_editlite.destroy
+call super::destroy
+end on
+
+type m_autoload from menu within m_edit
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_autoload.create
+call super::create
+this.tag = "EDITAUTO"
+this.text = "Autoload"
+this.microhelp = "Edit autoload"
+end on
+
+on m_autoload.destroy
+call super::destroy
+end on
+
+type m_edit_1 from menu within m_edit
+end type
+
+on m_edit_1.create
+call super::create
+this.text = "-"
+end on
+
+on m_edit_1.destroy
+call super::destroy
+end on
+
+type m_editloc from menu within m_edit
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_editloc.create
+call super::create
+this.tag = "EDITLOC"
+this.text = "&Station definition"
+this.microhelp = "Edit station definitions"
+end on
+
+on m_editloc.destroy
+call super::destroy
+end on
+
+type m_editeq from menu within m_edit
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_editeq.create
+call super::create
+this.tag = "EDITEQ"
+this.text = "&TVM/PEM definition"
+this.microhelp = "Edit TVM/PEM definitions"
+end on
+
+on m_editeq.destroy
+call super::destroy
+end on
+
+type m_editlist from menu within m_edit
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_editlist.create
+call super::create
+this.tag = "EDITLIST"
+this.text = "&List"
+this.microhelp = "Edit lists"
+end on
+
+on m_editlist.destroy
+call super::destroy
+end on
+
+type m_editdef from menu within m_edit
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_editdef.create
+call super::create
+this.tag = "EDITDEF"
+this.text = "&Card Definition"
+this.microhelp = "Add, modify, and delete card definitions"
+end on
+
+on m_editdef.destroy
+call super::destroy
+end on
+
+type m_editalm from menu within m_edit
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_editalm.create
+call super::create
+this.tag = "EDITALM"
+this.text = "&Alarm Setting"
+this.microhelp = "Configure alarm settings"
+end on
+
+on m_editalm.destroy
+call super::destroy
+end on
+
+type m_editmod from menu within m_edit
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_editmod.create
+call super::create
+this.tag = "EDITMOD"
+this.text = "&Module"
+this.microhelp = "Add, modify, and delete module definitions"
+end on
+
+on m_editmod.destroy
+call super::destroy
+end on
+
+type m_editmnt from menu within m_edit
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_editmnt.create
+call super::create
+this.tag = "EDITMNT"
+this.text = "Main&tenance"
+this.microhelp = "Add, modify, and delete maintenance records"
+end on
+
+on m_editmnt.destroy
+call super::destroy
+end on
+
+type m_editfic from menu within m_edit
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_editfic.create
+call super::create
+this.tag = "EDITFIC"
+this.text = "&Fare Inspection Citation"
+this.microhelp = "Add, modify, and delete inspection citation records"
+end on
+
+on m_editfic.destroy
+call super::destroy
+end on
+
+type m_tool from menu within m_gfiscc
+m_mapeq m_mapeq
+m_tool_bar1 m_tool_bar1
+m_query m_query
+m_gfidba m_gfidba
+m_alert m_alert
+m_tool_bar2 m_tool_bar2
+m_uda m_uda
+end type
+
+on m_tool.create
+call super::create
+this.text = "&Tool"
+this.m_mapeq=create m_mapeq
+this.m_tool_bar1=create m_tool_bar1
+this.m_query=create m_query
+this.m_gfidba=create m_gfidba
+this.m_alert=create m_alert
+this.m_tool_bar2=create m_tool_bar2
+this.m_uda=create m_uda
+this.Item[UpperBound(this.Item)+1]=this.m_mapeq
+this.Item[UpperBound(this.Item)+1]=this.m_tool_bar1
+this.Item[UpperBound(this.Item)+1]=this.m_query
+this.Item[UpperBound(this.Item)+1]=this.m_gfidba
+this.Item[UpperBound(this.Item)+1]=this.m_alert
+this.Item[UpperBound(this.Item)+1]=this.m_tool_bar2
+this.Item[UpperBound(this.Item)+1]=this.m_uda
+end on
+
+on m_tool.destroy
+call super::destroy
+destroy(this.m_mapeq)
+destroy(this.m_tool_bar1)
+destroy(this.m_query)
+destroy(this.m_gfidba)
+destroy(this.m_alert)
+destroy(this.m_tool_bar2)
+destroy(this.m_uda)
+end on
+
+event selected;if gnv_syscon.inv_shell.of_isprocrunning("gfialert") then
+	m_alert.Checked=TRUE
+else
+	m_alert.Checked=FALSE
+end if
+
+end event
+
+type m_mapeq from menu within m_tool
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent("MAPEQ")
+
+end event
+
+on m_mapeq.create
+call super::create
+this.text = "&Map equipments"
+this.microhelp = "Place or relocate TVM/PEM on transit map"
+this.toolbaritemname = "gfimap.ico"
+this.toolbaritemtext = "Place or relocate TVM/PEM on transit map"
+this.toolbaritemorder = 200
+this.toolbaritemspace = 1
+end on
+
+on m_mapeq.destroy
+call super::destroy
+end on
+
+type m_tool_bar1 from menu within m_tool
+end type
+
+on m_tool_bar1.create
+call super::create
+this.text = "-"
+end on
+
+on m_tool_bar1.destroy
+call super::destroy
+end on
+
+type m_query from menu within m_tool
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent("QUERY")
+end event
+
+on m_query.create
+call super::create
+this.text = "&Query~tF6"
+this.shortcut = 117
+this.microhelp = "Launch interactive SQL"
+this.toolbaritemname = "gfisql.ico"
+this.toolbaritemtext = "Launch interactive SQL"
+this.toolbaritemorder = 600
+this.toolbaritemspace = 1
+end on
+
+on m_query.destroy
+call super::destroy
+end on
+
+type m_gfidba from menu within m_tool
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent("GFIDBA")
+end event
+
+on m_gfidba.create
+call super::create
+this.text = "&System Administrator~tF11"
+this.shortcut = 122
+this.microhelp = "Launch Genfare system administrator"
+this.toolbaritemname = "gfidba.ico"
+this.toolbaritemtext = "Launch Genfare system administrator"
+this.toolbaritemorder = 610
+end on
+
+on m_gfidba.destroy
+call super::destroy
+end on
+
+type m_alert from menu within m_tool
+end type
+
+event clicked;if Checked then
+	Run("kill.exe gfialert.exe",Minimized!)
+else
+	if FileExists(gnv_syscon.of_getgfidir()+"bin\gfialert.exe") then
+	else
+		FileCopy(gnv_syscon.of_getgfidir()+"bin\gfirun.exe",gnv_syscon.of_getgfidir()+"bin\gfialert.exe")
+	end if
+	Run("gfialert.exe")
+end if
+
+Checked=Not Checked
+
+end event
+
+on m_alert.create
+call super::create
+this.text = "&Alert Manager"
+this.microhelp = "Launch or shutdown Genfare alert manager"
+end on
+
+on m_alert.destroy
+call super::destroy
+end on
+
+type m_tool_bar2 from menu within m_tool
+end type
+
+on m_tool_bar2.create
+call super::create
+this.text = "-"
+end on
+
+on m_tool_bar2.destroy
+call super::destroy
+end on
+
+type m_uda from menu within m_tool
+m_uda1 m_uda1
+m_uda2 m_uda2
+m_uda3 m_uda3
+m_uda4 m_uda4
+m_uda5 m_uda5
+m_uda6 m_uda6
+m_uda7 m_uda7
+m_uda8 m_uda8
+m_uda9 m_uda9
+m_uda10 m_uda10
+end type
+
+on m_uda.create
+call super::create
+this.text = "&User Defined Actions"
+this.m_uda1=create m_uda1
+this.m_uda2=create m_uda2
+this.m_uda3=create m_uda3
+this.m_uda4=create m_uda4
+this.m_uda5=create m_uda5
+this.m_uda6=create m_uda6
+this.m_uda7=create m_uda7
+this.m_uda8=create m_uda8
+this.m_uda9=create m_uda9
+this.m_uda10=create m_uda10
+this.Item[UpperBound(this.Item)+1]=this.m_uda1
+this.Item[UpperBound(this.Item)+1]=this.m_uda2
+this.Item[UpperBound(this.Item)+1]=this.m_uda3
+this.Item[UpperBound(this.Item)+1]=this.m_uda4
+this.Item[UpperBound(this.Item)+1]=this.m_uda5
+this.Item[UpperBound(this.Item)+1]=this.m_uda6
+this.Item[UpperBound(this.Item)+1]=this.m_uda7
+this.Item[UpperBound(this.Item)+1]=this.m_uda8
+this.Item[UpperBound(this.Item)+1]=this.m_uda9
+this.Item[UpperBound(this.Item)+1]=this.m_uda10
+end on
+
+on m_uda.destroy
+call super::destroy
+destroy(this.m_uda1)
+destroy(this.m_uda2)
+destroy(this.m_uda3)
+destroy(this.m_uda4)
+destroy(this.m_uda5)
+destroy(this.m_uda6)
+destroy(this.m_uda7)
+destroy(this.m_uda8)
+destroy(this.m_uda9)
+destroy(this.m_uda10)
+end on
+
+type m_uda1 from menu within m_uda
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent("UDA1")
+end event
+
+on m_uda1.create
+call super::create
+this.text = "Action&1"
+this.microhelp = "User defined action 1"
+end on
+
+on m_uda1.destroy
+call super::destroy
+end on
+
+type m_uda2 from menu within m_uda
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent("UDA2")
+end event
+
+on m_uda2.create
+call super::create
+this.text = "Action&2"
+this.microhelp = "User defined action 2"
+end on
+
+on m_uda2.destroy
+call super::destroy
+end on
+
+type m_uda3 from menu within m_uda
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent("UDA3")
+end event
+
+on m_uda3.create
+call super::create
+this.text = "Action&3"
+this.microhelp = "User defined action 3"
+end on
+
+on m_uda3.destroy
+call super::destroy
+end on
+
+type m_uda4 from menu within m_uda
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent("UDA4")
+end event
+
+on m_uda4.create
+call super::create
+this.text = "Action&4"
+this.microhelp = "User defined action 4"
+end on
+
+on m_uda4.destroy
+call super::destroy
+end on
+
+type m_uda5 from menu within m_uda
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent("UDA5")
+end event
+
+on m_uda5.create
+call super::create
+this.text = "Action&5"
+this.microhelp = "User defined action 5"
+end on
+
+on m_uda5.destroy
+call super::destroy
+end on
+
+type m_uda6 from menu within m_uda
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent("UDA6")
+end event
+
+on m_uda6.create
+call super::create
+this.text = "Action&6"
+this.microhelp = "User defined action 6"
+end on
+
+on m_uda6.destroy
+call super::destroy
+end on
+
+type m_uda7 from menu within m_uda
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent("UDA7")
+end event
+
+on m_uda7.create
+call super::create
+this.text = "Action&7"
+this.microhelp = "User defined action 7"
+end on
+
+on m_uda7.destroy
+call super::destroy
+end on
+
+type m_uda8 from menu within m_uda
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent("UDA8")
+end event
+
+on m_uda8.create
+call super::create
+this.text = "Action&8"
+this.microhelp = "User defined action 8"
+end on
+
+on m_uda8.destroy
+call super::destroy
+end on
+
+type m_uda9 from menu within m_uda
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent("UDA9")
+end event
+
+on m_uda9.create
+call super::create
+this.text = "Action&9"
+this.microhelp = "User defined action 9"
+end on
+
+on m_uda9.destroy
+call super::destroy
+end on
+
+type m_uda10 from menu within m_uda
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent("UDA10")
+end event
+
+on m_uda10.create
+call super::create
+this.text = "Action1&0"
+this.microhelp = "User defined action 10"
+end on
+
+on m_uda10.destroy
+call super::destroy
+end on
+
+type m_report from menu within m_gfiscc
+m_pss m_pss
+m_bct m_bct
+m_dpt m_dpt
+m_dtr m_dtr
+m_lcr m_lcr
+m_crr m_crr
+m_evl m_evl
+m_smr m_smr
+m_rpl m_rpl
+m_mir m_mir
+m_ami m_ami
+m_xcp m_xcp
+m_scr m_scr
+m_emp m_emp
+m_3pb m_3pb
+m_mmr m_mmr
+m_fic m_fic
+m_tvmcashonhandreport m_tvmcashonhandreport
+m_rpt_1 m_rpt_1
+m_maf m_maf
+m_rpt_2 m_rpt_2
+m_sch m_sch
+m_ssm m_ssm
+m_srg m_srg
+m_vcr m_vcr
+m_usd m_usd
+end type
+
+on m_report.create
+call super::create
+this.text = "&Report"
+this.m_pss=create m_pss
+this.m_bct=create m_bct
+this.m_dpt=create m_dpt
+this.m_dtr=create m_dtr
+this.m_lcr=create m_lcr
+this.m_crr=create m_crr
+this.m_evl=create m_evl
+this.m_smr=create m_smr
+this.m_rpl=create m_rpl
+this.m_mir=create m_mir
+this.m_ami=create m_ami
+this.m_xcp=create m_xcp
+this.m_scr=create m_scr
+this.m_emp=create m_emp
+this.m_3pb=create m_3pb
+this.m_mmr=create m_mmr
+this.m_fic=create m_fic
+this.m_tvmcashonhandreport=create m_tvmcashonhandreport
+this.m_rpt_1=create m_rpt_1
+this.m_maf=create m_maf
+this.m_rpt_2=create m_rpt_2
+this.m_sch=create m_sch
+this.m_ssm=create m_ssm
+this.m_srg=create m_srg
+this.m_vcr=create m_vcr
+this.m_usd=create m_usd
+this.Item[UpperBound(this.Item)+1]=this.m_pss
+this.Item[UpperBound(this.Item)+1]=this.m_bct
+this.Item[UpperBound(this.Item)+1]=this.m_dpt
+this.Item[UpperBound(this.Item)+1]=this.m_dtr
+this.Item[UpperBound(this.Item)+1]=this.m_lcr
+this.Item[UpperBound(this.Item)+1]=this.m_crr
+this.Item[UpperBound(this.Item)+1]=this.m_evl
+this.Item[UpperBound(this.Item)+1]=this.m_smr
+this.Item[UpperBound(this.Item)+1]=this.m_rpl
+this.Item[UpperBound(this.Item)+1]=this.m_mir
+this.Item[UpperBound(this.Item)+1]=this.m_ami
+this.Item[UpperBound(this.Item)+1]=this.m_xcp
+this.Item[UpperBound(this.Item)+1]=this.m_scr
+this.Item[UpperBound(this.Item)+1]=this.m_emp
+this.Item[UpperBound(this.Item)+1]=this.m_3pb
+this.Item[UpperBound(this.Item)+1]=this.m_mmr
+this.Item[UpperBound(this.Item)+1]=this.m_fic
+this.Item[UpperBound(this.Item)+1]=this.m_tvmcashonhandreport
+this.Item[UpperBound(this.Item)+1]=this.m_rpt_1
+this.Item[UpperBound(this.Item)+1]=this.m_maf
+this.Item[UpperBound(this.Item)+1]=this.m_rpt_2
+this.Item[UpperBound(this.Item)+1]=this.m_sch
+this.Item[UpperBound(this.Item)+1]=this.m_ssm
+this.Item[UpperBound(this.Item)+1]=this.m_srg
+this.Item[UpperBound(this.Item)+1]=this.m_vcr
+this.Item[UpperBound(this.Item)+1]=this.m_usd
+end on
+
+on m_report.destroy
+call super::destroy
+destroy(this.m_pss)
+destroy(this.m_bct)
+destroy(this.m_dpt)
+destroy(this.m_dtr)
+destroy(this.m_lcr)
+destroy(this.m_crr)
+destroy(this.m_evl)
+destroy(this.m_smr)
+destroy(this.m_rpl)
+destroy(this.m_mir)
+destroy(this.m_ami)
+destroy(this.m_xcp)
+destroy(this.m_scr)
+destroy(this.m_emp)
+destroy(this.m_3pb)
+destroy(this.m_mmr)
+destroy(this.m_fic)
+destroy(this.m_tvmcashonhandreport)
+destroy(this.m_rpt_1)
+destroy(this.m_maf)
+destroy(this.m_rpt_2)
+destroy(this.m_sch)
+destroy(this.m_ssm)
+destroy(this.m_srg)
+destroy(this.m_vcr)
+destroy(this.m_usd)
+end on
+
+type m_pss from menu within m_report
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_pss.create
+call super::create
+this.tag = "RPTPSS"
+this.text = "Sales Summary Report"
+this.microhelp = "Launch sales summary report"
+end on
+
+on m_pss.destroy
+call super::destroy
+end on
+
+type m_bct from menu within m_report
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_bct.create
+call super::create
+this.tag = "RPTBCT"
+this.text = "Bank Card Transaction Report"
+this.microhelp = "Launch bank card transaction report"
+end on
+
+on m_bct.destroy
+call super::destroy
+end on
+
+type m_dpt from menu within m_report
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_dpt.create
+call super::create
+this.tag = "RPTDPT"
+this.text = "Daily Card Type Report"
+this.microhelp = "Launch daily card type report"
+end on
+
+on m_dpt.destroy
+call super::destroy
+end on
+
+type m_dtr from menu within m_report
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_dtr.create
+call super::create
+this.tag = "RPTDTR"
+this.text = "Transaction Detail Report"
+this.microhelp = "Launch transaction detail report"
+end on
+
+on m_dtr.destroy
+call super::destroy
+end on
+
+type m_lcr from menu within m_report
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_lcr.create
+call super::create
+this.tag = "RPTLCR"
+this.text = "Lost Credit Report"
+this.microhelp = "Launch lost credit report"
+end on
+
+on m_lcr.destroy
+call super::destroy
+end on
+
+type m_crr from menu within m_report
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_crr.create
+call super::create
+this.tag = "RPTCRR"
+this.text = "Counting Room Reconciliation Report"
+this.microhelp = "Launch counting room reconciliation report"
+end on
+
+on m_crr.destroy
+call super::destroy
+end on
+
+type m_evl from menu within m_report
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_evl.create
+call super::create
+this.tag = "RPTEVL"
+this.text = "Event List Report"
+this.microhelp = "Launch event list report"
+end on
+
+on m_evl.destroy
+call super::destroy
+end on
+
+type m_smr from menu within m_report
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_smr.create
+call super::create
+this.tag = "RPTSMR"
+this.text = "Daily Service and Maintenance Report"
+this.microhelp = "Launch daily service and maintenance report"
+end on
+
+on m_smr.destroy
+call super::destroy
+end on
+
+type m_rpl from menu within m_report
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_rpl.create
+call super::create
+this.tag = "RPTRPL"
+this.text = "Cash Replenishment Report"
+this.microhelp = "Launch Cash Replenishment Report"
+end on
+
+on m_rpl.destroy
+call super::destroy
+end on
+
+type m_mir from menu within m_report
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_mir.create
+call super::create
+this.tag = "RPTMIR"
+this.text = "Module Inventory Report"
+this.microhelp = "Launch module inventory report"
+end on
+
+on m_mir.destroy
+call super::destroy
+end on
+
+type m_ami from menu within m_report
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_ami.create
+call super::create
+this.tag = "RPTAMI"
+this.visible = false
+this.text = "Absolute Module Inventory Report"
+this.enabled = false
+this.microhelp = "Launch absolute module inventory report"
+end on
+
+on m_ami.destroy
+call super::destroy
+end on
+
+type m_xcp from menu within m_report
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_xcp.create
+call super::create
+this.tag = "RPTXCP"
+this.text = "Exception Report"
+this.microhelp = "Launch exception report"
+end on
+
+on m_xcp.destroy
+call super::destroy
+end on
+
+type m_scr from menu within m_report
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_scr.create
+call super::create
+this.tag = "RPTSCR"
+this.text = "Security Report"
+this.microhelp = "Launch security report"
+end on
+
+on m_scr.destroy
+call super::destroy
+end on
+
+type m_emp from menu within m_report
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_emp.create
+call super::create
+this.tag = "RPTEMP"
+this.text = "Employee Access Report"
+this.microhelp = "Launch employee access report"
+end on
+
+on m_emp.destroy
+call super::destroy
+end on
+
+type m_3pb from menu within m_report
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_3pb.create
+call super::create
+this.tag = "RPT3PB"
+this.text = "Third Party Billing Report"
+this.microhelp = "Launch third party billing report"
+end on
+
+on m_3pb.destroy
+call super::destroy
+end on
+
+type m_mmr from menu within m_report
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_mmr.create
+call super::create
+this.tag = "RPTMMR"
+this.visible = false
+this.text = "Monthly Maintenance Summary Report"
+this.enabled = false
+this.microhelp = "Launch monthly maintenance summary report"
+end on
+
+on m_mmr.destroy
+call super::destroy
+end on
+
+type m_fic from menu within m_report
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_fic.create
+call super::create
+this.tag = "RPTFIC"
+this.text = "Fare Inspection Citation Summary Report"
+this.microhelp = "Launch fare inspection citation summary report"
+end on
+
+on m_fic.destroy
+call super::destroy
+end on
+
+type m_tvmcashonhandreport from menu within m_report
+end type
+
+event clicked;// LG-348 - 07/21/15 - MGM - New Report - TVM Cash on Hand Report
+ParentWindow.Dynamic Event ue_menuevent(tag)
+end event
+
+on m_tvmcashonhandreport.create
+call super::create
+this.tag = "RPTCHR"
+this.text = "TVM Cash on Hand Report"
+end on
+
+on m_tvmcashonhandreport.destroy
+call super::destroy
+end on
+
+type m_rpt_1 from menu within m_report
+end type
+
+on m_rpt_1.create
+call super::create
+this.text = "-"
+this.enabled = false
+end on
+
+on m_rpt_1.destroy
+call super::destroy
+end on
+
+type m_maf from menu within m_report
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_maf.create
+call super::create
+this.tag = "RPTMAF"
+this.text = "Bank Card Transaction Reconcialiation Report"
+this.microhelp = "Launch Genfare FIS MAF reconcialiation report"
+end on
+
+on m_maf.destroy
+call super::destroy
+end on
+
+type m_rpt_2 from menu within m_report
+end type
+
+on m_rpt_2.create
+call super::create
+this.text = "-"
+end on
+
+on m_rpt_2.destroy
+call super::destroy
+end on
+
+type m_sch from menu within m_report
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_sch.create
+call super::create
+this.tag = "RPTSCH"
+this.text = "Smart Card History Report"
+this.microhelp = "Launch Smart Card History Report"
+end on
+
+on m_sch.destroy
+call super::destroy
+end on
+
+type m_ssm from menu within m_report
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_ssm.create
+call super::create
+this.tag = "RPTSSM"
+this.text = "Smart Card Sales Summary Report"
+this.microhelp = "Launch Smart Card Sales Summary Report"
+end on
+
+on m_ssm.destroy
+call super::destroy
+end on
+
+type m_srg from menu within m_report
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_srg.create
+call super::create
+this.tag = "RPTSRG"
+this.text = "Smart Card Registration Report"
+this.microhelp = "Launch Smart Card Registration Report"
+end on
+
+on m_srg.destroy
+call super::destroy
+end on
+
+type m_vcr from menu within m_report
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_vcr.create
+call super::create
+this.tag = "RPTVCR"
+this.text = "Smart Card Velocity Control Report"
+this.microhelp = "Launch Smart Card Velocity Control report"
+end on
+
+on m_vcr.destroy
+call super::destroy
+end on
+
+type m_usd from menu within m_report
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent(tag)
+
+end event
+
+on m_usd.create
+call super::create
+this.tag = "RPTUSD"
+this.text = "Smart Card First Usage Report"
+this.microhelp = "Launch Smart Card First Usage Report"
+end on
+
+on m_usd.destroy
+call super::destroy
+end on
+
+type m_help from menu within m_gfiscc
+m_userguide m_userguide
+m_about m_about
+end type
+
+on m_help.create
+call super::create
+this.text = "&Help"
+this.m_userguide=create m_userguide
+this.m_about=create m_about
+this.Item[UpperBound(this.Item)+1]=this.m_userguide
+this.Item[UpperBound(this.Item)+1]=this.m_about
+end on
+
+on m_help.destroy
+call super::destroy
+destroy(this.m_userguide)
+destroy(this.m_about)
+end on
+
+type m_userguide from menu within m_help
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent("HELP")
+
+end event
+
+on m_userguide.create
+call super::create
+this.text = "&User~'s Guide~tF1"
+this.shortcut = 112
+this.microhelp = "Show User~'s Guide"
+end on
+
+on m_userguide.destroy
+call super::destroy
+end on
+
+type m_about from menu within m_help
+end type
+
+event clicked;ParentWindow.Dynamic Event ue_menuevent("ABOUT")
+end event
+
+on m_about.create
+call super::create
+this.text = "&About SPX Genfare System Control Center"
+this.microhelp = "About SPX Genfare System Control Center"
+this.toolbaritemname = "gfihelp.ico"
+this.toolbaritemtext = "About SPX Genfare System Control Center"
+this.toolbaritemorder = 999
+this.toolbaritemspace = 1
+end on
+
+on m_about.destroy
+call super::destroy
+end on
+

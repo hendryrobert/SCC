@@ -1,0 +1,103 @@
+$PBExportHeader$f_getledx.srf
+$PBExportComments$[GFISCC} Get led icon x position function
+global type f_getledx from function_object
+end type
+
+forward prototypes
+global function integer f_getledx (integer ai_status, integer ai_pos, integer ai_len)
+end prototypes
+
+global function integer f_getledx (integer ai_status, integer ai_pos, integer ai_len);//////////////////////////////////////////////////////////////
+//
+// Function int f_getledx(ai_status, ai_pos, ai_len)
+//
+// Description: get dynamic x position for status led
+//					 5 positions are: 416, 480, 544, 608, 672
+//
+//					 used by the equipment summary datawindow
+//
+// Arguments: ai_status - status (0-4)
+//				  ai_pos - status position in status string, e.g. 01234, 24 (always sorted and distinct
+//				  ai_len - status string length (0-5)
+//
+//////////////////////////////////////////////////////////////
+if ai_len=1 then RETURN 544
+
+choose case ai_status
+	case 0											// ai_pos=1
+		if ai_len<=2 then							// status string: 0, 0x
+			RETURN 544
+		elseif ai_len<5 then						// status string: 0xx, 0xxxx
+			RETURN 480
+		else											// status string: 01234
+			RETURN 416
+		end if
+	case 1											// ai_pos<=2
+		if ai_pos=1 then
+			if ai_len>=3 then						// status string: 1xx, 1234
+				RETURN 480
+			else										// status string: 1, 1x
+				RETURN 544
+			end if
+		elseif ai_len=2 then						// status string: 01
+			RETURN 608
+		elseif ai_len=5 then						// status string: 01234
+			RETURN 480
+		else											// status string: 01x, 01xx
+			RETURN 544
+		end if
+	case 2											// ai_pos<=3
+		choose case ai_pos
+			case 1
+				if ai_len=3 then					// status string: 234
+					RETURN 480
+				else									// status string: 2, 2x
+					RETURN 544
+				end if
+			case 2
+				if ai_len=2 then					// status string: x2
+					RETURN 608
+				else									// status string: x2x, x234
+					RETURN 544
+				end if
+			case else
+				if ai_len=5 then					// status string: 01234
+					RETURN 544
+				else									// status string: 012, 012x
+					RETURN 608
+				end if
+		end choose
+	case 3
+		choose case ai_pos
+			case 1									// status string: 3, 34
+				RETURN 544
+			case 2
+				if ai_len=2 then					// status string: x3
+					RETURN 608
+				else									// status string: x34
+					RETURN 544
+				end if
+			case 4
+				if ai_len=4 then					// status string: xxx3
+					RETURN 672
+				else									// status string: 01234
+					RETURN 608
+				end if
+			case else								// status string: xx3, xx34
+				RETURN 608
+		end choose
+	case 4
+		choose case ai_pos
+			case 1									// status string: 4
+				RETURN 544
+			case 2, 3								// status string: x4, xx4
+				RETURN 608
+			case else								// status string: xxx4, 01234
+				RETURN 672
+		end choose
+end choose
+
+RETURN 0
+
+end function
+
